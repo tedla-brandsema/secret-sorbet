@@ -1,0 +1,18 @@
+[package]
+name = "secret-sorbet-core"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+name = "secret_sorbet_core"
+
+[dependencies]
+argon2 = { version = "0.6", default-features = false, features = ["alloc", "parallel", "zeroize"] }
+hmac = "0.12"
+sha2 = "0.10"
+zeroize = "1.8"
+
+[dev-dependencies]
+proptest = "1.11"

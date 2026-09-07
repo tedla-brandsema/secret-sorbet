@@ -1,0 +1,6 @@
+/target/
+/graphify-out/
+/fuzz/artifacts/
+/fuzz/corpus/
+/fuzz/target/
+**/*.rs.bk

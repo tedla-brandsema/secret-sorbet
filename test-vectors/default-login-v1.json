@@ -1,0 +1,51 @@
+[
+  {
+    "algorithm": "secret-sorbet-core-v1",
+    "profile": "secret-sorbet-login-v1",
+    "kdf": {
+      "algorithm": "argon2id",
+      "version": 19,
+      "memory_kib": 65536,
+      "iterations": 3,
+      "lanes": 4,
+      "output_length": 32,
+      "salt_derivation": "sha256-domain-context-v1",
+      "salt_domain": "secret-sorbet-core-v1:argon2id:salt",
+      "salt_length": 16
+    },
+    "passphrase": "long private passphrase",
+    "variables": [
+      ["purpose", "login"],
+      ["service", "github.com"],
+      ["username", "ted@example.com"],
+      ["counter", "1"]
+    ],
+    "policy": {
+      "length": 20,
+      "classes": [
+        {
+          "name": "lowercase",
+          "chars": "abcdefghijklmnopqrstuvwxyz",
+          "min_count": 1
+        },
+        {
+          "name": "uppercase",
+          "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+          "min_count": 1
+        },
+        {
+          "name": "digit",
+          "chars": "0123456789",
+          "min_count": 1
+        },
+        {
+          "name": "special",
+          "chars": "!@#$%^&*()-_+=<>?",
+          "min_count": 1
+        }
+      ],
+      "allowed": null
+    },
+    "output": "jSOua2Pe8n-xhU-kui9#"
+  }
+]
