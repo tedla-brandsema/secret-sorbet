@@ -29,8 +29,8 @@ under `Unreleased` in the implementation slice. An unfinished reconciliation
 must not imply a slice is complete.
 
 The authorized delivery through Phase 2 (P01–P05) is complete: implementation,
-review, verification, and commits are recorded below. R03 is active below for
-the separately authorized `v0.1.0` development source release.
+review, verification, and commits are recorded below. The separately authorized
+`v0.1.0` development source release is published; no slice is active.
 P06 and P07 remain deferred; the broader P08 portability gate remains open.
 Deferral does not establish Unicode-profile or mobile execution evidence.
 
@@ -145,7 +145,7 @@ The user authorized publication of `v0.1.0`; the
 [release plan](plans/v0.1.0-release.md) defines its scope and verification.
 This scoped release does not close P06, P07, or P08.
 
-- [~] Release delivery: publication evidence review and commit reconciliation remain.
+- [x] Release delivery: preparation, verification, publication and review are complete.
 - [x] **R01 — Prepare release metadata and scope.** Reconcile changelog, source
   installation and security/support documentation. Depends on: P01–P05 and
   user release authorization. Independently reviewed; 69 local documentation
@@ -160,14 +160,15 @@ This scoped release does not close P06, P07, or P08.
   10,000 fuzz runs, both audits, fixture reproduction, isolated tagged-source
   installation, and 75 documentation links/anchors. Nine payloads, 18 profile
   commands, and all 12 baseline CI jobs verified. Commit: `17f30b8`.
-- [>] **R03 — Tag and publish v0.1.0.** Require exact candidate CI success;
+- [x] **R03 — Tag and publish v0.1.0.** Require exact candidate CI success;
   create an annotated tag, review the draft release, publish and verify remote
   tag/release identity. Depends on: reviewed, verified and committed R01/R02.
   Published [v0.1.0](https://github.com/tedla-brandsema/secret-sorbet/releases/tag/v0.1.0)
   at tagged commit `2c59ee5` after all 12 exact-candidate jobs passed. Remote
   annotated tag, inspected draft notes, published/latest status, release ID
-  `415747405`, date and archive links verified. Publication evidence review and
-  commit reconciliation remain before marking this slice complete.
+  `415747405`, date and archive links verified. Independent prepublication and
+  publication-evidence reviews approved; 77 local documentation links/anchors,
+  body/candidate/tag identity and diff checks passed. Evidence commit: `11d9338`.
 
 ## Documentation delivery
 
