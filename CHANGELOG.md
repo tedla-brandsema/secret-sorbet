@@ -36,6 +36,8 @@ awaiting release. Planned portability work is tracked in the
 - An explicit v1 support/input/recovery contract and public API documentation
   covering exact Unicode bytes, whitespace/case rules, memory/thread requirements,
   and the distinction between shared-library evidence and planned applications.
+- A README compatibility matrix with per-target verified CI job links and a
+  separate live workflow badge for `main`.
 - Repository documentation conventions, an implementation plan, and a
   canonical TODO list linked to the roadmap.
 

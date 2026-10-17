@@ -69,6 +69,37 @@ runtime requirements, exact Unicode/whitespace rules, safe recovery, and executi
 evidence. Visually identical Unicode text can have different bytes and produce
 different v1 passwords. No normalization is added silently.
 
+## Compatibility matrix
+
+Snapshot dated 2026-10-17: native targets passed the workspace tests; QEMU
+targets passed the shared core/password suites (CLI integration tests are not
+included). Both ran in debug and release profiles at revision
+[`fd01cbc`](https://github.com/tedla-brandsema/secret-sorbet/commit/fd01cbc),
+in [workflow run 39022373134](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134).
+These are point-in-time results, not live status badges. See the
+[support contract](docs/support.md#execution-coverage) for runtime requirements
+and evidence details.
+
+| Execution | Target | ISA | Result |
+| --- | --- | --- | --- |
+| Native Linux | `x86_64-unknown-linux-gnu` | x86-64 | [✅ Passed](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567741) |
+| Native Linux | `aarch64-unknown-linux-gnu` | ARM64 | [✅ Passed](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567684) |
+| Native Windows | `x86_64-pc-windows-msvc` | x86-64 | [✅ Passed](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567705) |
+| Native Windows | `aarch64-pc-windows-msvc` | ARM64 | [✅ Passed](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567766) |
+| Native macOS | `x86_64-apple-darwin` | x86-64 | [✅ Passed](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567704) |
+| Native macOS | `aarch64-apple-darwin` | Apple silicon ARM64 | [✅ Passed](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567720) |
+| QEMU Linux | `i686-unknown-linux-gnu` | x86, 32-bit | [✅ Passed](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567708) |
+| QEMU Linux | `armv7-unknown-linux-gnueabihf` | ARMv7, 32-bit | [✅ Passed](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567702) |
+| QEMU Linux | `s390x-unknown-linux-gnu` | s390x, big-endian | [✅ Passed](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567689) |
+
+iOS and Android execution remains unverified and deferred; see the
+[support contract](docs/support.md#runtime-and-toolchain-requirements).
+
+The live Rust workflow status below follows pushes to `main` and reflects the
+whole workflow, not only compatibility execution:
+
+[![Rust workflow status](https://github.com/tedla-brandsema/secret-sorbet/actions/workflows/rust.yml/badge.svg?branch=main&event=push)](https://github.com/tedla-brandsema/secret-sorbet/actions/workflows/rust.yml?query=branch%3Amain+event%3Apush)
+
 Run the same quality gates locally:
 
 ```sh

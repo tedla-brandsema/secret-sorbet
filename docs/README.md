@@ -10,6 +10,13 @@ shipped.
 The [support contract](support.md) defines runtime limits, byte-exact input rules,
 recovery guidance, and target-specific verification evidence.
 
+The root [README compatibility matrix](../README.md#compatibility-matrix) is a
+snapshot of those execution results. Refresh its revision, date, and job links
+together with the support contract and durable evidence after checking each
+target's debug and release execution outcomes. Keep native and emulated scope
+explicit. The separate workflow badge tracks `main` push runs automatically;
+the matrix checkmarks do not update automatically.
+
 ## Architecture boundaries
 
 - `lib/core` owns deterministic derivation, canonical context encoding, the KDF,
