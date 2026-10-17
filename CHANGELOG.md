@@ -9,6 +9,7 @@ This changelog tracks notable changes. Planned work remains in the
 
 - Optimized repository artwork and reusable app, browser-extension and favicon
   assets, with ImageMagick regeneration instructions.
+- The project logo at the top of the README.
 
 ## [0.1.0] - 2026-10-17
 

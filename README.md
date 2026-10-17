@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/brand/logo.webp" alt="Secret Sorbet spy scoop mascot" width="400" height="400">
+</p>
+
 # Secret Sorbet
 
 Secret Sorbet is a deterministic password generator. The core promise is:

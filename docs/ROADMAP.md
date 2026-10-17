@@ -30,7 +30,7 @@ must not imply a slice is complete.
 
 The authorized delivery through Phase 2 (P01–P05) is complete: implementation,
 review, verification, and commits are recorded below. The separately authorized
-`v0.1.0` development source release is published; no slice is active.
+`v0.1.0` development source release is published; D07 is active below.
 P06 and P07 remain deferred; the broader P08 portability gate remains open.
 Deferral does not establish Unicode-profile or mobile execution evidence.
 
@@ -214,6 +214,11 @@ This scoped release does not close P06, P07, or P08.
   on: D05. Independently reviewed; exact block relocation, preservation of all
   contents/links, intended section order, and diff checks passed. Documentation
   only; Rust checks were not rerun. Commit: `95c4873`.
+
+- [>] **D07 — Lead the README with the project image.** Display the optimized
+  brand logo before the title, with alternative text and bounded display size.
+  Depends on: B01. Preserve existing README content and compatibility ordering;
+  verify the image path, markup, exact content preservation and independent review.
 
 Completed documentation items do not establish portability implementation or
 unverified remote execution.
