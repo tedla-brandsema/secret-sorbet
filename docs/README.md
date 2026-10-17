@@ -147,6 +147,14 @@ and retain an `Unreleased` section for subsequent work. Keep Cargo versions,
 release notes, and any approved tag consistent. Creating a changelog or completing
 the roadmap does not authorize tagging, publishing packages, or creating a release.
 
+The user separately authorized the initial `v0.1.0` development source release.
+Its [release plan](plans/v0.1.0-release.md) defines verification and publication
+without marking the broader P08 gate complete. Keep mobile/NFC deferrals explicit;
+source archives do not imply prebuilt binaries or registry publication. Before
+publishing, require exact candidate CI success, reviewed notes, matching package
+versions and an annotated tag; use `gh release create --verify-tag --draft` with
+a notes file, then publish and verify the resulting release and tag identity.
+
 ## Generated state and security
 
 Keep `target/`, `graphify-out/`, `fuzz/target/`, `fuzz/corpus/`, `fuzz/artifacts/`,

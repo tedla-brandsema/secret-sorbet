@@ -9,7 +9,9 @@ passphrase bytes; the CLI does not normalize visually equivalent Unicode text.
 
 ## Build and run
 
-From the repository root:
+Install the CLI from the tagged source release, or build it from a source
+checkout as described in the root [README](../../README.md). To build and run
+from the repository root:
 
 ```sh
 cargo build --locked --release -p secret-sorbet-cli

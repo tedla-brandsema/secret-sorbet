@@ -1,10 +1,16 @@
 # Changelog
 
-This changelog tracks notable changes. `Unreleased` contains implemented changes
-awaiting release. Planned portability work is tracked in the
+This changelog tracks notable changes. Planned work remains in the
 [roadmap](docs/ROADMAP.md).
 
 ## Unreleased
+
+## [0.1.0] - 2026-10-17
+
+Initial development source release for the shared Rust libraries and CLI. No
+prebuilt binaries or crates.io packages are included. This is not a stable
+release or an independent security audit. NFC normalization and iOS/Android
+verification remain deferred.
 
 ### Added
 

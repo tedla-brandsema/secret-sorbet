@@ -7,9 +7,11 @@ phase and slice progress, the checkbox legend, and completion evidence.
 [documentation index](../README.md) explains repository conventions.
 New plans belong in `docs/plans/`. Do not maintain progress checkboxes here.
 
-The current authorized delivery ends at Phase 2 (P01–P05). P06 and P07 are
+The portability implementation delivery ends at Phase 2 (P01–P05). P06 and P07 are
 deferred at the user's request; their decision/device evidence is not required
-to close Phase 2. P08 remains the separate future release gate.
+to close Phase 2. P08 remains the broader future portability release gate.
+The separately authorized [v0.1.0 development source release](v0.1.0-release.md)
+has its own verification and publication slices; it does not complete P08.
 
 ## Baseline evidence and scope
 

@@ -29,8 +29,9 @@ under `Unreleased` in the implementation slice. An unfinished reconciliation
 must not imply a slice is complete.
 
 The authorized delivery through Phase 2 (P01–P05) is complete: implementation,
-review, verification, and commits are recorded below. No slice is active.
-P06 and P07 are deferred at the user's request; P08 remains outside this run.
+review, verification, and commits are recorded below. R01 is active below for
+the separately authorized `v0.1.0` development source release.
+P06 and P07 remain deferred; the broader P08 portability gate remains open.
 Deferral does not establish Unicode-profile or mobile execution evidence.
 
 ## Phase 1 — Safety and byte contract
@@ -137,6 +138,23 @@ Deferral does not establish Unicode-profile or mobile execution evidence.
   Missing required execution leaves this phase partial, not complete with a waiver.
   [Scope and acceptance](plans/portability-and-determinism.md#p08).
   Completion evidence: none. Commit: none.
+
+## v0.1.0 development source release
+
+The user authorized publication of `v0.1.0`; the
+[release plan](plans/v0.1.0-release.md) defines its scope and verification.
+This scoped release does not close P06, P07, or P08.
+
+- [~] Release delivery: preparation, verification, and publication remain.
+- [>] **R01 — Prepare release metadata and scope.** Reconcile changelog, source
+  installation and security/support documentation. Depends on: P01–P05 and
+  user release authorization. No runtime or version change is planned.
+- [ ] **R02 — Verify and review the source release.** Run local gates, inspect
+  all nine CI execution artifacts, and resolve independent release review.
+  Depends on: R01 draft. Record exact checked revisions and evidence.
+- [ ] **R03 — Tag and publish v0.1.0.** Require exact candidate CI success;
+  create an annotated tag, review the draft release, publish and verify remote
+  tag/release identity. Depends on: reviewed, verified and committed R01/R02.
 
 ## Documentation delivery
 

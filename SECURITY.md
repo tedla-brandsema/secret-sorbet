@@ -1,14 +1,19 @@
 # Security Policy
 
 Secret Sorbet handles credentials and therefore treats security reports as
-first-class project work. The project is currently pre-release and has not
-undergone an independent security audit.
+first-class project work. Version 0.1.0 is an initial development source
+release. It has not undergone an independent security audit and does not make a
+stable or production-security claim.
 
 ## Supported Versions
 
-There are no supported releases yet. Reports should be evaluated against the
-latest commit on `main`. This policy will be updated with an explicit supported
-version matrix before the first stable release.
+| Version | Status |
+| --- | --- |
+| 0.1.0 | Current initial development source release; security-report triage reference |
+
+Evaluate reports against the latest commit on `main`, and include the affected
+tag or commit when known. This table identifies the current development version;
+it is not a stable support commitment.
 
 ## Reporting a Vulnerability
 
@@ -36,7 +41,7 @@ synthetic test data before sharing logs, screenshots, or reproduction material.
 The maintainers will validate the report, coordinate remediation and disclosure
 with the reporter, and use a GitHub security advisory when appropriate. Response
 and remediation times depend on severity, complexity, and maintainer
-availability; this pre-release project does not promise a fixed service level.
+availability; the project does not promise a fixed service level.
 Please avoid public disclosure until a fix is available or a disclosure date has
 been coordinated.
 
@@ -53,6 +58,6 @@ Reports are especially useful when they concern:
 
 Reports about documented limitations are welcome when they demonstrate a new or
 materially greater impact. General feature requests and non-security defects
-should use the public issue tracker after the repository is published.
+should use the public issue tracker.
 
 [report]: https://github.com/tedla-brandsema/secret-sorbet/security/advisories/new

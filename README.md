@@ -79,7 +79,29 @@ commands, and documentation conventions. Implementation plans belong in
 `docs/plans/`; [the roadmap](docs/ROADMAP.md) tracks phase and slice progress,
 and `docs/TODO.md` records accepted unfinished work.
 
-See [`CHANGELOG.md`](CHANGELOG.md) for changes awaiting the first release.
+See [`CHANGELOG.md`](CHANGELOG.md) for the v0.1.0 source release notes.
+
+Install the CLI from the tagged source release with the tested Rust 1.98.0
+toolchain. Install that toolchain if needed, then run Cargo explicitly with it:
+
+```sh
+rustup toolchain install 1.98.0 --profile minimal
+cargo +1.98.0 install --locked \
+  --git https://github.com/tedla-brandsema/secret-sorbet \
+  --tag v0.1.0 secret-sorbet-cli
+```
+
+To build the full workspace from a source checkout:
+
+```sh
+git clone --branch v0.1.0 --depth 1 \
+  https://github.com/tedla-brandsema/secret-sorbet.git
+cd secret-sorbet
+cargo build --locked --release --workspace
+```
+
+This source release does not include prebuilt binaries or crates.io packages.
+The desktop, iOS, and Android applications remain planned.
 
 ## Determinism Contract
 
