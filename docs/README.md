@@ -95,4 +95,7 @@ portability implementation slices.
 | Slice | Status | Outcome | Dependencies | Commit |
 | --- | --- | --- | --- | --- |
 | D01 | [x] | Rename the empty documentation directory and establish repository conventions | None | `f19a75b` |
-| D02 | [>] | Review and save the portability plan and canonical backlog | D01 | Pending |
+| D02 | [x] | Review and save the portability plan and canonical backlog | D01 | `7fd4ffc` |
+
+Documentation delivery is complete. The next implementation slice is P01;
+all portability implementation slices remain future work in the canonical TODO.
