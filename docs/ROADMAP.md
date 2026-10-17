@@ -128,9 +128,10 @@ remain future work; the completed documentation setup below is separate.
 - [x] **D03 — Establish the authoritative roadmap.** Reviewed phase/slice
   checkboxes, the single progress legend, links and historical commit references;
   committed as `c7364ca`.
-- [>] **D04 — Establish the release changelog.** Create root `CHANGELOG.md`,
+- [x] **D04 — Establish the release changelog.** Create root `CHANGELOG.md`,
   document per-slice maintenance, and connect final release-note review to P08.
-  Depends on: D03. Review and verification: pending. Commit: pending.
+  Depends on: D03. Independently reviewed; 44 local links/anchors, changelog
+  structure, future-slice status and diff checks passed. Commit: `6dfae73`.
 
 Completed documentation items do not establish portability implementation or
 unverified remote execution.
