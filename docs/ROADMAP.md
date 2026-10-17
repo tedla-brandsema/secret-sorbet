@@ -28,17 +28,18 @@ lands. Update the root [changelog](../CHANGELOG.md) with release-relevant change
 under `Unreleased` in the implementation slice. An unfinished reconciliation
 must not imply a slice is complete.
 
-No portability implementation is active or authorized by this documentation
-correction. **Next: P01**, before broadening long-policy test coverage. All P01–P08
-remain future work; the completed documentation setup below is separate.
+The authorized delivery boundary is the end of Phase 2 (P01–P05), including
+review, verification, commits, and pushes to `origin/main`. **Active: P01**.
+P06 and P07 are deferred at the user's request; P08 remains outside this run.
+Deferral does not establish Unicode-profile or mobile execution evidence.
 
 ## Phase 1 — Safety and byte contract
 
-- [ ] Phase 1: complete P01 and P02 before portable execution expands.
+- [~] Phase 1: P01 is active; P02 remains to complete the byte contract.
 
 <a id="p01"></a>
 
-- [ ] **P01 — Fix free-position selection nontermination.** Preserve all successful
+- [>] **P01 — Fix free-position selection nontermination.** Preserve all successful
   v1 outputs; add u64 big-endian sampling only above 256 and bounded regressions.
   Depends on: none. [Scope and acceptance](plans/portability-and-determinism.md#p01).
   Completion evidence: none. Commit: none.
@@ -89,6 +90,7 @@ remain future work; the completed documentation setup below is separate.
   rejection, with versioning and recovery/migration constraints; preserve v1.
   Depends on: P02/P03. A new profile requires explicit approval and later scope.
   [Scope and acceptance](plans/portability-and-determinism.md#p06).
+  Deferred by user for this Phase 2 delivery; no normalized profile is approved.
   Completion evidence: none. Commit: none.
 
 ## Phase 4 — Mobile core evidence
@@ -101,6 +103,7 @@ remain future work; the completed documentation setup below is separate.
   simulator/emulator execution and named physical-device evidence for claims.
   Depends on: P02–P05; availability of mobile harnesses/toolchains/devices.
   [Scope and acceptance](plans/portability-and-determinism.md#p07).
+  Deferred by user for this Phase 2 delivery; no mobile execution is claimed.
   Completion evidence: none. Commit: none.
 
 ## Phase 5 — Release acceptance

@@ -42,3 +42,9 @@ awaiting release. Planned portability work is tracked in the
 - Clipboard cleanup preserves newer contents when verification succeeds and
   clears the clipboard for safety when verification fails. Cleanup and history
   protection limits are described in the [CLI guide](app/cli/README.md).
+
+### Fixed
+
+- Custom policies longer than 256 characters can now place required character
+  classes instead of looping indefinitely. Existing successful v1 outputs retain
+  their byte mapping, including long policies with no required positions.

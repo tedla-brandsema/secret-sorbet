@@ -6,16 +6,21 @@ use crate::{ByteSource, CharacterClass, Encoder, Error, OutputPolicy, Variable};
 
 struct CyclingSource {
     next: u8,
+    remaining: usize,
 }
 
 impl CyclingSource {
     fn new(seed: u8) -> Self {
-        Self { next: seed }
+        Self {
+            next: seed,
+            remaining: 8192,
+        }
     }
 }
 
 impl ByteSource for CyclingSource {
     fn next_byte(&mut self) -> Result<u8, Error> {
+        self.remaining = self.remaining.checked_sub(1).ok_or(Error::HmacKey)?;
         let byte = self.next;
         self.next = self.next.wrapping_add(1);
         Ok(byte)
@@ -23,7 +28,11 @@ impl ByteSource for CyclingSource {
 }
 
 proptest! {
-    #![proptest_config(ProptestConfig::with_cases(512))]
+    #![proptest_config(ProptestConfig {
+        cases: 512,
+        rng_seed: proptest::test_runner::RngSeed::Fixed(0x503031),
+        ..ProptestConfig::default()
+    })]
 
     #[test]
     fn deduplication_preserves_first_occurrence(bytes in prop::collection::vec(0u8..=127, 0..256)) {
@@ -56,7 +65,7 @@ proptest! {
 
     #[test]
     fn valid_policies_always_satisfy_their_contract(
-        length in 2usize..65,
+        length in 2usize..513,
         lowercase_min in 0usize..17,
         digit_min in 0usize..17,
         seed in any::<u8>(),
@@ -81,7 +90,7 @@ proptest! {
 
     #[test]
     fn encoding_is_deterministic_for_the_same_byte_stream(
-        length in 1usize..65,
+        length in 1usize..513,
         seed in any::<u8>(),
     ) {
         let encoder = Encoder::new(OutputPolicy {
@@ -97,7 +106,7 @@ proptest! {
 
     #[test]
     fn arbitrary_required_counts_do_not_panic(
-        length in 0usize..65,
+        length in 0usize..513,
         first_min in any::<usize>(),
         second_min in any::<usize>(),
     ) {

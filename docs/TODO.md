@@ -22,6 +22,9 @@ backlog items after recording their evidence and commit in the roadmap.
 | [P07](ROADMAP.md#p07) | Build mobile core harnesses, then execute fixtures on iOS/Android simulators/emulators and named physical devices; keep app availability claims separate. | P02–P05 |
 | [P08](ROADMAP.md#p08) | Complete required gates, independent review, documentation consistency, evidence-based support claims, and changelog preparation for a later authorized release. | P01–P07 |
 
+Current authorization covers P01–P05 through Phase 2. P06 and P07 are deferred
+at the user's request; P08 is outside this delivery boundary.
+
 P06 requires a decision record. Implementing an NFC profile requires explicit
 approval and a subsequent plan; this TODO does not approve a compatibility
 change. P07 remains future work while mobile tooling/devices are unavailable;

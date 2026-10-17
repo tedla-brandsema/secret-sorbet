@@ -5,10 +5,17 @@ use secret_sorbet_core::{ByteSource, CharacterClass, Encoder, Error, OutputPolic
 
 struct FuzzSource {
     next: u8,
+    remaining: usize,
+    exhausted: bool,
 }
 
 impl ByteSource for FuzzSource {
     fn next_byte(&mut self) -> Result<u8, Error> {
+        if self.remaining == 0 {
+            self.exhausted = true;
+            return Err(Error::HmacKey);
+        }
+        self.remaining -= 1;
         let byte = self.next;
         self.next = self.next.wrapping_add(1);
         Ok(byte)
@@ -20,8 +27,23 @@ fuzz_target!(|data: &[u8]| {
     let encoder = Encoder::new(policy.clone());
     let seed = data.last().copied().unwrap_or_default();
 
-    let first = encoder.encode(&mut FuzzSource { next: seed });
-    let second = encoder.encode(&mut FuzzSource { next: seed });
+    // Cycling bytes accept a draw within 256 attempts in the byte sampler;
+    // for the bounded larger ranges, eight-byte cycling draws are above the
+    // rejection prefix. This budget exceeds all valid policies' consumption
+    // while making a nonterminating rejection regression fail deterministically.
+    let mut first_source = FuzzSource {
+        next: seed,
+        remaining: 8192,
+        exhausted: false,
+    };
+    let mut second_source = FuzzSource {
+        next: seed,
+        remaining: 8192,
+        exhausted: false,
+    };
+    let first = encoder.encode(&mut first_source);
+    let second = encoder.encode(&mut second_source);
+    assert!(!first_source.exhausted && !second_source.exhausted);
     assert_eq!(first, second);
 
     if let Ok(output) = first {
@@ -58,7 +80,7 @@ fn policy_from_bytes(data: &[u8]) -> OutputPolicy {
         .collect();
 
     OutputPolicy {
-        length: usize::from(byte(0) % 65),
+        length: (usize::from(byte(0)) | (usize::from(byte(19)) << 8)) % 513,
         classes,
         allowed: match byte(18) % 5 {
             0 => None,
