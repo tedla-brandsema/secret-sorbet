@@ -45,7 +45,8 @@ diagnostic behavior.
 
 See [`docs/README.md`](docs/README.md) for architecture boundaries, contributor
 commands, and documentation conventions. Implementation plans belong in
-`docs/plans/`; accepted unfinished work is tracked in `docs/TODO.md`.
+`docs/plans/`; [the roadmap](docs/ROADMAP.md) tracks phase and slice progress,
+and `docs/TODO.md` records accepted unfinished work.
 
 ## Determinism Contract
 

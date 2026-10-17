@@ -88,6 +88,11 @@ production quality.
 - Store plans created for this repository under `docs/plans/`. Track accepted
   unfinished work in `docs/TODO.md`; use stable slice IDs and link each item to
   its implementation plan. Keep implementation status separate from proposals.
+- Use `docs/ROADMAP.md` as the authoritative phase and slice progress tracker.
+  Follow its checkbox legend, mark a slice active when implementation starts,
+  and record review, verification, and its commit hash before marking it complete.
+  Reconcile the roadmap after every slice; link to its status from plans and TODO
+  rather than maintaining competing progress checkboxes.
 - Architecture and security documentation must distinguish implemented behavior,
   planned work, accepted risk, and externally audited claims. Never present a
   plan or assumption as a shipped guarantee.

@@ -1,12 +1,11 @@
 # Portability and deterministic derivation implementation plan
 
-This is future implementation work. Creating this plan does not implement or
-verify any portability guarantee. [TODO](../TODO.md) is the canonical status
-tracker; [documentation index](../README.md) records documentation deliveries.
-New plans belong in `docs/plans/`.
-
-Status: `[x]` completed, independently reviewed, and committed; `[>]` active;
-`[ ]` future; `[~]` partial, with remaining work stated. All slices below are future.
+This plan defines implementation scope and acceptance; creating it does not
+implement or verify a portability guarantee. The [roadmap](../ROADMAP.md) owns
+phase and slice progress, the checkbox legend, and completion evidence.
+[TODO](../TODO.md) records accepted outstanding work; the
+[documentation index](../README.md) explains repository conventions.
+New plans belong in `docs/plans/`. Do not maintain progress checkboxes here.
 
 ## Evidence and scope
 
@@ -81,7 +80,7 @@ expansion of the policy test surface.
 
 <a id="p01"></a>
 
-### P01 — Bound encoder selection before broadening coverage [ ]
+### P01 — Bound encoder selection before broadening coverage
 
 - **Depends on:** no implementation slices. **Owns:** `lib/core/src/encoder.rs`,
   `policy.rs`, `error.rs`, local/property tests, `fuzz/fuzz_targets/policy.rs`,
@@ -111,7 +110,7 @@ expansion of the policy test surface.
 
 <a id="p02"></a>
 
-### P02 — Pin synthetic byte contracts and raw-input vectors [ ]
+### P02 — Pin synthetic byte contracts and raw-input vectors
 
 - **Depends on:** P01 for long-policy cases. **Owns:** `test-vectors/`,
   `lib/pw/tests/compatibility_vectors.rs`, `lib/core/src/context.rs`, `kdf.rs`,
@@ -143,7 +142,7 @@ expansion of the policy test surface.
 
 <a id="p03"></a>
 
-### P03 — Publish a precise support and Unicode baseline [ ]
+### P03 — Publish a precise support and Unicode baseline
 
 - **Depends on:** P02; final evidence references P04/P05. **Owns:** root README,
   core/pw rustdoc, architecture/security notes, app READMEs, and a support matrix
@@ -161,7 +160,7 @@ expansion of the policy test surface.
 
 <a id="p04"></a>
 
-### P04 — Execute vectors on native desktop targets [ ]
+### P04 — Execute vectors on native desktop targets
 
 - **Depends on:** P02. **Owns:** native jobs in `.github/workflows/rust.yml`,
   toolchain baseline configuration, and support-matrix evidence fields.
@@ -177,7 +176,7 @@ expansion of the policy test surface.
 
 <a id="p05"></a>
 
-### P05 — Execute 32-bit and big-endian vectors under emulation [ ]
+### P05 — Execute 32-bit and big-endian vectors under emulation
 
 - **Depends on:** P01/P02; coordinate CI ownership after P04. **Owns:** emulated
   jobs/scripts in `.github/`, target setup documentation, support evidence.
@@ -195,7 +194,7 @@ expansion of the policy test surface.
 
 <a id="p06"></a>
 
-### P06 — Decide whether to add an opt-in normalized profile [ ]
+### P06 — Decide whether to add an opt-in normalized profile
 
 - **Depends on:** P02/P03. **Owns:** a decision record under `docs/`, future
   profile proposal and recovery/migration documentation; no v1 code changes.
@@ -214,7 +213,7 @@ expansion of the policy test surface.
 
 <a id="p07"></a>
 
-### P07 — Establish mobile core execution evidence [ ]
+### P07 — Establish mobile core execution evidence
 
 - **Depends on:** P02–P05. **Owns:** isolated mobile test harnesses, mobile CI,
   `app/ios/README.md`, `app/android/README.md`, and mobile support evidence.
@@ -232,7 +231,7 @@ expansion of the policy test surface.
 
 <a id="p08"></a>
 
-### P08 — Review evidence and close the portability release gate [ ]
+### P08 — Review evidence and close the portability release gate
 
 - **Depends on:** P01–P07 (P06 requires a decision, not mandatory new-profile code).
   **Owns:** final documentation consistency, evidence/release checklist and TODO
@@ -254,7 +253,9 @@ expansion of the policy test surface.
   diagnostics require positive/negative redaction tests; CLI stderr and explicit
   secret-output channels retain their documented separation.
 - Acceptance: gates pass, independent review recorded, docs and fixtures agree,
-  limitations are explicit, and each completed slice is committed before `[x]`.
+  limitations are explicit, and each completed slice is reviewed, verified, and
+  committed before marking it complete in the roadmap.
   Missing any required platform execution leaves that slice and this release
-  phase `[~]`, with the exact remaining requirement in TODO; it is not a waiver.
+  phase partial in the roadmap, with the exact remaining requirement in TODO;
+  it is not a waiver.
 - **Commit:** `docs: record reviewed portability evidence and remaining limits`.

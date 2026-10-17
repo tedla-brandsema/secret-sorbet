@@ -2,8 +2,10 @@
 
 Store repository documentation under `docs/` and implementation plans under
 `docs/plans/`. Keep application usage instructions beside each application.
-`docs/TODO.md` is the canonical backlog of accepted unfinished work. Plans describe
-proposed changes; code, tests, and recorded verification establish what is shipped.
+`docs/ROADMAP.md` is the authoritative phase and slice progress tracker;
+`docs/TODO.md` is the canonical backlog of accepted unfinished work. Plans define
+scope and acceptance; code, tests, and recorded verification establish what is
+shipped.
 
 ## Architecture boundaries
 
@@ -60,20 +62,20 @@ history or discard unrelated work.
 
 ## Plans and progress
 
-The current implementation roadmap is
-[portability and deterministic derivation](plans/portability-and-determinism.md).
-Track its unfinished slices in the [canonical TODO](TODO.md).
+Use the [roadmap](ROADMAP.md) for phases, slice dependencies, current progress,
+completion evidence, and the checkbox legend. The detailed
+[portability plan](plans/portability-and-determinism.md) defines implementation
+scope and checks; the [canonical TODO](TODO.md) records unfinished work and
+deferrals.
 
 Use stable slice IDs, explicit dependencies, file ownership, acceptance checks,
-and documentation requirements. Record progress with these markers:
-
-- `[x]` completed, reviewed, and committed; record its commit hash.
-- `[>]` active slice.
-- `[ ]` known future work.
-- `[~]` partially completed phase.
+and documentation requirements. Apply the roadmap's checkbox legend there;
+link to that progress from other documents rather than duplicating status.
 
 Update the canonical TODO when work is deferred or accepted. A distinct roadmap
-reconciliation may be committed separately after the slice hash is known.
+reconciliation may be committed separately after the slice hash is known. Update
+the roadmap after every slice, including its review and verification evidence,
+commit hash, phase progress, and next slice.
 
 ## Generated state and security
 
@@ -87,15 +89,5 @@ and documentation requirements, and [SECURITY.md](../SECURITY.md) for private
 vulnerability reporting. Use synthetic inputs in fixtures and review evidence.
 Destructive operations require explicit authorization.
 
-## Documentation delivery
-
-This ledger tracks the requested documentation setup, separately from future
-portability implementation slices.
-
-| Slice | Status | Outcome | Dependencies | Commit |
-| --- | --- | --- | --- | --- |
-| D01 | [x] | Rename the empty documentation directory and establish repository conventions | None | `f19a75b` |
-| D02 | [x] | Review and save the portability plan and canonical backlog | D01 | `7fd4ffc` |
-
-Documentation delivery is complete. The next implementation slice is P01;
-all portability implementation slices remain future work in the canonical TODO.
+Documentation delivery history is recorded in the roadmap alongside the
+implementation phases.
