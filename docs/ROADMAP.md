@@ -29,7 +29,7 @@ under `Unreleased` in the implementation slice. An unfinished reconciliation
 must not imply a slice is complete.
 
 The authorized delivery through Phase 2 (P01–P05) is complete: implementation,
-review, verification, and commits are recorded below. No slice is active.
+review, verification, and commits are recorded below. D06 is active below.
 P06 and P07 are deferred at the user's request; P08 remains outside this run.
 Deferral does not establish Unicode-profile or mobile execution evidence.
 
@@ -161,6 +161,11 @@ Deferral does not establish Unicode-profile or mobile execution evidence.
   30 local documentation links/anchors and diff checks passed, and the live
   badge returned HTTP 200 with SVG content. Documentation-only scope; no Rust
   behavior changed or Rust checks rerun. Commit: `f656579`.
+
+- [>] **D06 — Place compatibility coverage after the introduction.** Move the
+  existing README matrix and workflow badge above the monorepo layout. Depends
+  on: D05. Preserve section contents and links; verify exact block preservation,
+  section order, and an independent documentation review.
 
 Completed documentation items do not establish portability implementation or
 unverified remote execution.
