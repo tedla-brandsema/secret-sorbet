@@ -29,13 +29,13 @@ under `Unreleased` in the implementation slice. An unfinished reconciliation
 must not imply a slice is complete.
 
 The authorized delivery boundary is the end of Phase 2 (P01–P05), including
-review, verification, commits, and pushes to `origin/main`. **Active: P02**.
+review, verification, commits, and pushes to `origin/main`. **Active: P04**.
 P06 and P07 are deferred at the user's request; P08 remains outside this run.
 Deferral does not establish Unicode-profile or mobile execution evidence.
 
 ## Phase 1 — Safety and byte contract
 
-- [~] Phase 1: P01 is complete; P02 is active to complete the byte contract.
+- [x] Phase 1: P01 and P02 are reviewed, verified, and committed.
 
 <a id="p01"></a>
 
@@ -49,15 +49,19 @@ Deferral does not establish Unicode-profile or mobile execution evidence.
 
 <a id="p02"></a>
 
-- [>] **P02 — Pin synthetic compatibility contracts.** Expand raw/effective login,
+- [x] **P02 — Pin synthetic compatibility contracts.** Expand raw/effective login,
   intermediate byte, end-to-end, Unicode and invalid/boundary fixtures.
   Depends on: P01 for long-policy cases.
   [Scope and acceptance](plans/portability-and-determinism.md#p02).
-  Completion evidence: none. Commit: none.
+  Independently reviewed and reproduced with Python/libargon2. Formatting,
+  Clippy, and all 68 workspace tests passed in debug and release; the original
+  v1 fixture is unchanged. Dependency lockfiles are unchanged from P01's audits.
+  Commit: `8b24697`.
 
 ## Phase 2 — Portable execution evidence
 
-- [ ] Phase 2: complete P03, P04 and P05; separate builds from executed vectors.
+- [~] Phase 2: P04 is active; P03's support documentation will incorporate
+  execution evidence after P04/P05, as its dependencies require.
 
 <a id="p03"></a>
 
@@ -70,7 +74,7 @@ Deferral does not establish Unicode-profile or mobile execution evidence.
 
 <a id="p04"></a>
 
-- [ ] **P04 — Execute fixtures on native desktops.** Verify debug/release bytes
+- [>] **P04 — Execute fixtures on native desktops.** Verify debug/release bytes
   on all six configured native desktop targets and retain execution evidence.
   Depends on: P02. [Scope and acceptance](plans/portability-and-determinism.md#p04).
   Completion evidence: none. Commit: none.
