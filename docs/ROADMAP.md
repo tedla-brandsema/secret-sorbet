@@ -29,7 +29,7 @@ under `Unreleased` in the implementation slice. An unfinished reconciliation
 must not imply a slice is complete.
 
 The authorized delivery boundary is the end of Phase 2 (P01–P05), including
-review, verification, commits, and pushes to `origin/main`. **Active: P04**.
+review, verification, commits, and pushes to `origin/main`. **Active: P05**.
 P06 and P07 are deferred at the user's request; P08 remains outside this run.
 Deferral does not establish Unicode-profile or mobile execution evidence.
 
@@ -60,7 +60,7 @@ Deferral does not establish Unicode-profile or mobile execution evidence.
 
 ## Phase 2 — Portable execution evidence
 
-- [~] Phase 2: P04 is active; P03's support documentation will incorporate
+- [~] Phase 2: P04 is complete and P05 is active; P03 will incorporate
   execution evidence after P04/P05, as its dependencies require.
 
 <a id="p03"></a>
@@ -74,14 +74,17 @@ Deferral does not establish Unicode-profile or mobile execution evidence.
 
 <a id="p04"></a>
 
-- [>] **P04 — Execute fixtures on native desktops.** Verify debug/release bytes
+- [x] **P04 — Execute fixtures on native desktops.** Verify debug/release bytes
   on all six configured native desktop targets and retain execution evidence.
   Depends on: P02. [Scope and acceptance](plans/portability-and-determinism.md#p04).
-  Completion evidence: none. Commit: none.
+  Independently reviewed; seven harness regression tests and local clean-clone
+  integration passed. All six native debug/release jobs, quality, audit and fuzz
+  passed in [run 39021989305](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39021989305).
+  Commit: `7e7333b`.
 
 <a id="p05"></a>
 
-- [ ] **P05 — Execute 32-bit and big-endian fixtures.** Run i686, ARMv7 and s390x
+- [>] **P05 — Execute 32-bit and big-endian fixtures.** Run i686, ARMv7 and s390x
   under emulation with reproducible setup and explicit resource bounds.
   Depends on: P01/P02; coordinate CI ownership with P04.
   [Scope and acceptance](plans/portability-and-determinism.md#p05).
