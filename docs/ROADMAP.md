@@ -153,7 +153,8 @@ This scoped release does not close P06, P07, or P08.
   passed. No runtime or version changes. Commit: `164ca61`.
 - [>] **R02 — Verify and review the source release.** Run local gates, inspect
   all nine CI execution artifacts, and resolve independent release review.
-  Depends on: R01 draft. Record exact checked revisions and evidence.
+  Depends on: R01 draft. [Recorded checks](verification/v0.1.0.md) distinguish
+  baseline artifacts from the exact candidate CI still required before tagging.
 - [ ] **R03 — Tag and publish v0.1.0.** Require exact candidate CI success;
   create an annotated tag, review the draft release, publish and verify remote
   tag/release identity. Depends on: reviewed, verified and committed R01/R02.
