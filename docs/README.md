@@ -27,9 +27,9 @@ an explicit compatibility contract.
 
 ## Contributor checks
 
-The workspace uses Rust edition 2024 and Cargo resolver 3. CI installs the stable
-Rust toolchain; the repository does not pin a compiler or declare an MSRV.
-Edition 2024 alone does not establish the dependency graph's minimum compiler.
+The workspace uses Rust edition 2024 and Cargo resolver 3. The repository pins
+Rust 1.98.0 in `rust-toolchain.toml`, and CI installs that baseline explicitly.
+This is a tested baseline, not a declared minimum supported Rust version.
 Run commands from the repository root and use the checked-in lockfiles.
 
 ```sh
@@ -54,6 +54,24 @@ cargo +nightly fuzz run policy -- -runs=10000
 This requires nightly Rust and `cargo-fuzz` 0.13.2. Keep the fuzz hot loop bounded
 and avoid invoking Argon2 there. Documentation-only changes require link, path,
 and diff checks; report any baseline Rust checks actually performed.
+
+The native CI harness executes serialized debug and release workspace tests on
+six desktop targets and retains metadata with compiler/runtime identity, tested
+commit, lockfile and fixture hashes, and command outcomes. It refuses dirty
+checkouts. To reproduce it locally from a clean checkout, keep its output outside
+the worktree so it does not make the next run dirty:
+
+```sh
+python3 -B -m unittest discover -s .github/scripts -p 'test_*.py'
+python3 .github/scripts/test-evidence.py \
+  --target x86_64-unknown-linux-gnu --runner local \
+  --output /tmp/secret-sorbet-native-evidence.json
+```
+
+The second command is for a native x86-64 GNU Linux host; choose the host's actual
+Rust target on other systems. Harness Python requires 3.11 or newer (`tomllib`);
+CI uses Python 3.12. Metadata is retained for 90 days in GitHub Actions artifacts;
+durable support claims must retain run links and fixture/lock identity in docs.
 
 Use one lowercase Conventional Commit type per coherent reviewed slice, for
 example `docs: define the portability plan`. Stage only intended files. Commit

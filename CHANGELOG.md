@@ -28,11 +28,15 @@ awaiting release. Planned portability work is tracked in the
 - Fifteen additional synthetic raw-login vectors and independent Python/libargon2
   reproduction, plus pinned context, salt, key, HMAC, Unicode, and policy-boundary
   contracts. The original v1 vector remains unchanged.
+- A native CI harness for serialized debug/release workspace tests on six desktop
+  targets, with clean-checkout checks and retained compiler/runtime, commit,
+  lockfile, fixture, and command-status metadata.
 - Repository documentation conventions, an implementation plan, and a
   canonical TODO list linked to the roadmap.
 
 ### Changed
 
+- The tested Rust baseline is pinned to 1.98.0; fuzzing explicitly selects nightly.
 - Repository documentation lives under `docs/`, with implementation plans under
   `docs/plans/` and phase/slice progress in `docs/ROADMAP.md`.
 

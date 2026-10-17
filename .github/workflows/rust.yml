@@ -19,9 +19,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@master
         with:
+          toolchain: "1.98.0"
           components: rustfmt, clippy
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test execution evidence harness
+        run: python -B -m unittest discover -s .github/scripts -p 'test_*.py'
 
       - name: Check formatting
         run: cargo fmt --all -- --check
@@ -30,27 +38,48 @@ jobs:
         run: cargo clippy --locked --workspace --all-targets -- -D warnings
 
   test:
-    name: ${{ matrix.os }}
+    name: native ${{ matrix.target }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 15
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        os:
-          - ubuntu-latest
-          - ubuntu-24.04-arm
-          - windows-latest
-          - windows-11-arm
-          - macos-15-intel
-          - macos-latest
+        include:
+          - os: ubuntu-24.04
+            target: x86_64-unknown-linux-gnu
+          - os: ubuntu-24.04-arm
+            target: aarch64-unknown-linux-gnu
+          - os: windows-2025
+            target: x86_64-pc-windows-msvc
+          - os: windows-11-arm
+            target: aarch64-pc-windows-msvc
+          - os: macos-15-intel
+            target: x86_64-apple-darwin
+          - os: macos-15
+            target: aarch64-apple-darwin
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "1.98.0"
 
-      - name: Test workspace
-        run: cargo test --locked --workspace
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute debug and release workspace tests with native evidence
+        run: python .github/scripts/test-evidence.py --target "${{ matrix.target }}" --runner "${{ matrix.os }}"
+
+      - name: Retain native execution metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-evidence-${{ matrix.target }}
+          path: native-evidence.json
+          if-no-files-found: error
+          retention-days: 90
 
   audit:
     name: dependency security audit
@@ -60,7 +89,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "1.98.0"
 
       - name: Install cargo-audit
         run: cargo install cargo-audit --version 0.22.2 --locked
@@ -82,7 +113,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@nightly
 
       - name: Install cargo-fuzz
-        run: cargo install cargo-fuzz --version 0.13.2 --locked
+        run: cargo +nightly install cargo-fuzz --version 0.13.2 --locked
 
       - name: Exercise policy validation and encoding
-        run: cargo fuzz run policy -- -runs=10000
+        run: cargo +nightly fuzz run policy -- -runs=10000
