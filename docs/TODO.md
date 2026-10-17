@@ -26,7 +26,7 @@ approval and a subsequent plan; this TODO does not approve a compatibility
 change. P07 remains future work while mobile tooling/devices are unavailable;
 record specific partial evidence and remaining work instead of closing it.
 
-R01 is active for the authorized [v0.1.0 source release](plans/v0.1.0-release.md).
+R02 is active for the authorized [v0.1.0 source release](plans/v0.1.0-release.md).
 Its separate verification and publication gate does not close P08 or waive its
 missing mobile requirements. Record new accepted unfinished work here and link
 it to the roadmap.
