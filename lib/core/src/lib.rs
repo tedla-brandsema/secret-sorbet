@@ -1,3 +1,17 @@
+//! Deterministic, versioned derivation with caller-defined ASCII output policies.
+//!
+//! Inputs are exact UTF-8 bytes: this layer does not trim, normalize, reorder,
+//! or case-fold variables. The v1 context uses fixed-width big-endian lengths
+//! and counters, a fixed Argon2id profile, and HMAC-SHA-512 expansion. Preserve
+//! input bytes, variable/class order, and policy metadata for password recovery.
+//!
+//! The implementation requires `std`, allocation, and a 32- or 64-bit target.
+//! Each derivation uses 64 MiB of Argon2 working memory plus runtime overhead;
+//! callers must bound input sizes and concurrency. Resource exhaustion or thread
+//! initialization failures are not guaranteed to become recoverable errors.
+//! Libraries do not configure logging; callers must not log secrets or raw input
+//! bundles. Validation failures return [`Error`], whose display text omits inputs.
+
 mod context;
 mod encoder;
 mod error;
@@ -37,6 +51,11 @@ pub use variable::Variable;
 use context::canonical_context;
 use stream::HmacByteStream;
 
+/// Fixed KDF and salt parameters bound to the algorithm compatibility contract.
+///
+/// Changing any cryptographic parameter changes derived outputs and requires a
+/// versioned compatibility decision and new vectors. Fields describe the shipped
+/// profile; they are not configurable per invocation.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct KdfProfile {
     pub algorithm: &'static str,
@@ -50,6 +69,10 @@ pub struct KdfProfile {
     pub salt_length: usize,
 }
 
+/// Argon2id v19 with 64 MiB, three passes, four lanes, and a 32-byte key.
+///
+/// The `parallel` dependency feature uses Rayon; four lanes do not require four
+/// CPU cores or guarantee a particular number of worker threads.
 pub const KDF_PROFILE: KdfProfile = KdfProfile {
     algorithm: "argon2id",
     version: 19,
@@ -62,8 +85,19 @@ pub const KDF_PROFILE: KdfProfile = KdfProfile {
     salt_length: 16,
 };
 
+/// Identifier included in every canonical context; never infer it from a release.
 pub const ALGORITHM_VERSION: &str = "secret-sorbet-core-v1";
 
+/// Derive an ASCII output using exact secret/variable bytes and the encoder policy.
+///
+/// Empty secrets, empty variable names/values, and invalid policies return typed
+/// errors before KDF work. An empty variable list is valid. Variable order and
+/// every policy field affect the result. No Unicode normalization is performed.
+///
+/// Successful results are sensitive credentials and must only be delivered
+/// through a caller's explicit secret-output channel. The returned `String` is
+/// caller-owned; use zeroizing storage if required. See the crate-level resource
+/// requirements: allocation/thread failures need not be returned as [`Error`].
 pub fn derive_with_encoder(
     secret: &str,
     variables: &[Variable],
@@ -78,6 +112,11 @@ pub fn derive_with_encoder(
     encoder.encode(&mut stream)
 }
 
+/// Derive using a cloned policy; equivalent to [`derive_with_encoder`].
+///
+/// Exact bytes and ordering must be preserved for recovery. Validation/KDF errors
+/// are returned as [`Error`]; resource exhaustion is subject to the crate's runtime
+/// limits. This function never logs inputs or outputs.
 pub fn derive(
     secret: &str,
     variables: &[Variable],
@@ -86,10 +125,15 @@ pub fn derive(
     derive_with_encoder(secret, variables, &Encoder::new(policy.clone()))
 }
 
+/// Construct an encoder for [`default_password_policy`].
 pub fn default_encoder() -> Encoder {
     Encoder::new(default_password_policy())
 }
 
+/// Return the v1 20-character login policy, requiring one character per class.
+///
+/// Character/class order is compatibility-sensitive. The allowed alphabet is the
+/// deduplicated class union; an explicit alphabet would create a different context.
 pub fn default_password_policy() -> OutputPolicy {
     OutputPolicy {
         length: 20,

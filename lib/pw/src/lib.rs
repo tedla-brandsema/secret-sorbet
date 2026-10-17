@@ -1,3 +1,11 @@
+//! Login-specific preparation over the byte-exact core v1 algorithm.
+//!
+//! Service, username, and counter use Rust Unicode whitespace trimming; only
+//! ASCII service letters are lowercased. Passphrases are unchanged. Visually
+//! equivalent Unicode spellings can produce different passwords. Preserve the
+//! original inputs and profile for recovery; never silently normalize old inputs.
+//! The core's memory/thread requirements apply to every generation call.
+
 pub use secret_sorbet_core::{
     ALGORITHM_VERSION, CharacterClass, Encoder, Error as CoreError, KDF_PROFILE, OutputPolicy,
     Variable,
@@ -5,6 +13,7 @@ pub use secret_sorbet_core::{
 use std::fmt;
 use zeroize::{ZeroizeOnDrop, Zeroizing};
 
+/// Initial revision string; counters are text, not parsed numbers.
 pub const DEFAULT_COUNTER: &str = "1";
 
 /// Failures returned by password-specific input validation and generation.
@@ -61,6 +70,11 @@ pub struct LoginInput {
 }
 
 impl LoginInput {
+    /// Own a passphrase in zeroizing storage with default counter and policy.
+    ///
+    /// Inputs are stored verbatim; preparation and validation occur later. The
+    /// passphrase is never trimmed or Unicode-normalized. Other fields, including
+    /// values exposed by `Debug`, can contain sensitive account metadata.
     pub fn new(
         passphrase: impl Into<String>,
         service: impl Into<String>,
@@ -84,6 +98,11 @@ impl LoginInput {
         self.passphrase.as_str()
     }
 
+    /// Prepare ordered login variables under the v1 whitespace and case rules.
+    ///
+    /// Trims Unicode whitespace around service, username, and counter, then
+    /// lowercases ASCII service letters only. No NFC/NFD or DNS/IDNA normalization
+    /// occurs. The returned strings are caller-owned and may be sensitive.
     pub fn variables(&self) -> Vec<Variable> {
         vec![
             Variable::new("purpose", "login"),
@@ -109,6 +128,12 @@ impl fmt::Debug for LoginInput {
 
 impl ZeroizeOnDrop for LoginInput {}
 
+/// Validate and derive using the original passphrase and prepared login variables.
+///
+/// Returns [`Error`] for login or core validation/KDF failures. Empty effective
+/// counters are rejected by core validation. The core's resource limitations
+/// apply; allocation or thread-pool failure need not be recoverable. The returned
+/// credential is caller-owned and should use an explicit secret-output channel.
 pub fn generate_login_password(input: &LoginInput) -> Result<String, Error> {
     validate_login_input(input)?;
     Ok(secret_sorbet_core::derive_with_encoder(
@@ -118,20 +143,31 @@ pub fn generate_login_password(input: &LoginInput) -> Result<String, Error> {
     )?)
 }
 
+/// Return the core's compatibility-sensitive default login encoder.
 pub fn default_login_encoder() -> Encoder {
     secret_sorbet_core::default_encoder()
 }
 
+/// Return the core's compatibility-sensitive default 20-character policy.
 pub fn default_login_policy() -> OutputPolicy {
     secret_sorbet_core::default_password_policy()
 }
 
+/// Check service and username shape; secret, counter, and policy checks are deferred.
+///
+/// Returns [`Error::EmptyService`], [`Error::InvalidService`], or
+/// [`Error::EmptyUsername`]. Successful validation alone does not guarantee that
+/// [`generate_login_password`] succeeds or that a service is a valid DNS name.
 pub fn validate_login_input(input: &LoginInput) -> Result<(), Error> {
     validate_service(&input.service)?;
     validate_username(&input.username)?;
     Ok(())
 }
 
+/// Require nonempty trimmed text containing a dot and no Unicode whitespace.
+///
+/// This is not a full DNS or IDNA validator. Returns [`Error::EmptyService`] or
+/// [`Error::InvalidService`] without including the service in display text.
 pub fn validate_service(service: &str) -> Result<(), Error> {
     let service = service.trim();
     if service.is_empty() {
@@ -146,6 +182,9 @@ pub fn validate_service(service: &str) -> Result<(), Error> {
     Ok(())
 }
 
+/// Reject usernames empty after Unicode whitespace trimming.
+///
+/// Case, Unicode spelling, and account syntax are otherwise unconstrained.
 pub fn validate_username(username: &str) -> Result<(), Error> {
     if username.trim().is_empty() {
         return Err(Error::EmptyUsername);
@@ -153,6 +192,11 @@ pub fn validate_username(username: &str) -> Result<(), Error> {
     Ok(())
 }
 
+/// Check a minimal email shape after trimming, without DNS or Unicode normalization.
+///
+/// Requires nonempty parts around the first `@`, a dot in the domain, and no
+/// whitespace. Returns [`Error::InvalidEmail`]. Login usernames are not required
+/// to pass this helper.
 pub fn validate_email(email: &str) -> Result<(), Error> {
     let email = email.trim();
     let Some((local, domain)) = email.split_once('@') else {

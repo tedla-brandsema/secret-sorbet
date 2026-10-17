@@ -17,9 +17,9 @@ not the core model.
 lib/core      deterministic derivation and user-definable output policies
 lib/pw        password-specific defaults, login variables, and sanity checks
 app/cli       command-line password generator
-app/desktop   Tauri 2 desktop app for Windows, macOS, and Linux
-app/ios       native SwiftUI app
-app/android   native Kotlin/Compose app
+app/desktop   planned Tauri 2 app for Windows, macOS, and Linux
+app/ios       planned native SwiftUI app
+app/android   planned native Kotlin/Compose app
 ```
 
 The repository uses Rust for the shared deterministic engine. Desktop should use
@@ -59,8 +59,15 @@ HMAC-SHA-512 output. The `secret-sorbet-core-v1` profile uses Argon2id with
 64 MiB of memory, 3 iterations, 4 lanes, and a 256-bit derived key. Legacy
 direct-passphrase HMAC derivation was removed before release and is not supported.
 
-Compatibility should be guarded with test vectors. Every future implementation
-or binding must produce the exact same output for the same vector.
+The original login vector, fifteen additional synthetic raw-input vectors, and
+private intermediate byte fixtures guard compatibility. An independent
+Python/libargon2 implementation reproduces their expected values; ordinary Rust
+tests use checked-in literals. Every future binding must pass these fixtures.
+
+See the [support and v1 input contract](docs/support.md) for tested targets,
+runtime requirements, exact Unicode/whitespace rules, safe recovery, and execution
+evidence. Visually identical Unicode text can have different bytes and produce
+different v1 passwords. No normalization is added silently.
 
 Run the same quality gates locally:
 

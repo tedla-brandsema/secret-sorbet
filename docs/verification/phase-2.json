@@ -1,0 +1,344 @@
+{
+  "artifact_access_note": "Artifact metadata/digests were verified through the public API. Downloading archive payloads required authentication (HTTP 401); payloads were not inspected.",
+  "artifact_payloads_inspected": false,
+  "cargo_lock_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e",
+  "fixture_files_sha256": {
+    "test-vectors/README.md": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f",
+    "test-vectors/default-login-v1.json": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88",
+    "test-vectors/generate_synthetic.py": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8",
+    "test-vectors/synthetic-core-v1.rs": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9",
+    "test-vectors/synthetic-login-v1.json": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1"
+  },
+  "runs": [
+    {
+      "artifacts": [
+        {
+          "created_at": "2026-10-17T09:41:40Z",
+          "digest": "sha256:058838446e7157a962e67dcdba189a41b2ac24f87e1b0da77ef9bd55d01d7b4e",
+          "expires_at": "2027-01-15T09:39:59Z",
+          "id": 12097585510,
+          "name": "native-evidence-x86_64-unknown-linux-gnu",
+          "size_in_bytes": 1270
+        },
+        {
+          "created_at": "2026-10-17T09:43:37Z",
+          "digest": "sha256:f2e30a4dc449da88f38cf9b03ce4268e3e79ec50eabf10e084a5542b3d983f3e",
+          "expires_at": "2027-01-15T09:39:59Z",
+          "id": 12097391028,
+          "name": "native-evidence-x86_64-pc-windows-msvc",
+          "size_in_bytes": 1291
+        },
+        {
+          "created_at": "2026-10-17T09:43:31Z",
+          "digest": "sha256:ce875d0efe226ec55b95ba83727992132697df73472fbc27f8b6f5602d0f2fb9",
+          "expires_at": "2027-01-15T09:39:59Z",
+          "id": 12097156417,
+          "name": "native-evidence-x86_64-apple-darwin",
+          "size_in_bytes": 1289
+        },
+        {
+          "created_at": "2026-10-17T09:42:25Z",
+          "digest": "sha256:3f31371f4267df909d5693bfe30336342f7408d30c42322288f57902fc3d478c",
+          "expires_at": "2027-01-15T09:39:59Z",
+          "id": 12096916957,
+          "name": "native-evidence-aarch64-pc-windows-msvc",
+          "size_in_bytes": 1264
+        },
+        {
+          "created_at": "2026-10-17T09:41:53Z",
+          "digest": "sha256:01d2cb2ba0f91ae2531a5e554f74046e18c800b856f9d7e1b1a3d0ff1992233c",
+          "expires_at": "2027-01-15T09:39:59Z",
+          "id": 12096744225,
+          "name": "native-evidence-aarch64-unknown-linux-gnu",
+          "size_in_bytes": 1272
+        },
+        {
+          "created_at": "2026-10-17T09:42:43Z",
+          "digest": "sha256:80ed8555242add366d8499c9ad3c5957ffeecdd0496421abaab8e65f045ca3ce",
+          "expires_at": "2027-01-15T09:39:59Z",
+          "id": 12096508491,
+          "name": "native-evidence-aarch64-apple-darwin",
+          "size_in_bytes": 1372
+        }
+      ],
+      "conclusion": "success",
+      "id": 39021989305,
+      "jobs": [
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39021989305/job/117365474427",
+          "id": 117365474427,
+          "name": "formatting and lints"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39021989305/job/117365474551",
+          "id": 117365474551,
+          "name": "native x86_64-pc-windows-msvc"
+        },
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39021989305/job/117365474595",
+          "id": 117365474595,
+          "name": "dependency security audit"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39021989305/job/117365474597",
+          "id": 117365474597,
+          "name": "native x86_64-apple-darwin"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39021989305/job/117365474611",
+          "id": 117365474611,
+          "name": "native aarch64-pc-windows-msvc"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39021989305/job/117365474612",
+          "id": 117365474612,
+          "name": "native x86_64-unknown-linux-gnu"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39021989305/job/117365474624",
+          "id": 117365474624,
+          "name": "native aarch64-unknown-linux-gnu"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39021989305/job/117365474665",
+          "id": 117365474665,
+          "name": "native aarch64-apple-darwin"
+        },
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39021989305/job/117365474681",
+          "id": 117365474681,
+          "name": "policy fuzz smoke test"
+        }
+      ],
+      "run_attempt": 1,
+      "tested_commit": "7e7333bea198774759a290943156e3f999db2d45",
+      "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39021989305"
+    },
+    {
+      "artifacts": [
+        {
+          "created_at": "2026-10-17T09:55:42Z",
+          "digest": "sha256:7e9d50ed4b10fb38bb940816b95fd370f3b755c999ee2b29ee61662ff7973ff4",
+          "expires_at": "2027-01-15T09:46:05Z",
+          "id": 12097646439,
+          "name": "native-evidence-x86_64-apple-darwin",
+          "size_in_bytes": 1318
+        },
+        {
+          "created_at": "2026-10-17T09:49:04Z",
+          "digest": "sha256:93fdd655362b18376496c067b6e7553da939c3a956c816a609482c1a16776592",
+          "expires_at": "2027-01-15T09:46:05Z",
+          "id": 12097257824,
+          "name": "native-evidence-x86_64-pc-windows-msvc",
+          "size_in_bytes": 1323
+        },
+        {
+          "created_at": "2026-10-17T09:47:55Z",
+          "digest": "sha256:88759620a75ba62724acad75f58ebcef20d7e3c8be192cda737a1b1c8648d405",
+          "expires_at": "2027-01-15T09:46:05Z",
+          "id": 12097027137,
+          "name": "native-evidence-aarch64-unknown-linux-gnu",
+          "size_in_bytes": 1301
+        },
+        {
+          "created_at": "2026-10-17T09:51:32Z",
+          "digest": "sha256:35eeaa0cfd9483d7d280056292dd966b23c122ad2112e18fbc03d2c67fa28f64",
+          "expires_at": "2027-01-15T09:46:05Z",
+          "id": 12096917611,
+          "name": "emulated-evidence-armv7-unknown-linux-gnueabihf",
+          "size_in_bytes": 1881
+        },
+        {
+          "created_at": "2026-10-17T09:48:40Z",
+          "digest": "sha256:4098f1261e8562c6e5a016b019731127122a3798909cdaaa5b7f852b6c3ec72a",
+          "expires_at": "2027-01-15T09:46:05Z",
+          "id": 12096884023,
+          "name": "native-evidence-x86_64-unknown-linux-gnu",
+          "size_in_bytes": 1299
+        },
+        {
+          "created_at": "2026-10-17T09:48:43Z",
+          "digest": "sha256:9560e54f7d73f56b67613af8d2d441aaa46e2035357d06bc68250649564115a4",
+          "expires_at": "2027-01-15T09:46:05Z",
+          "id": 12096809432,
+          "name": "native-evidence-aarch64-pc-windows-msvc",
+          "size_in_bytes": 1298
+        },
+        {
+          "created_at": "2026-10-17T09:53:41Z",
+          "digest": "sha256:56a15fc1735044ace9f9ca2040c0fa457a61e05520d2513fa52b896ceedbff05",
+          "expires_at": "2027-01-15T09:46:05Z",
+          "id": 12096624110,
+          "name": "emulated-evidence-s390x-unknown-linux-gnu",
+          "size_in_bytes": 1863
+        },
+        {
+          "created_at": "2026-10-17T09:55:43Z",
+          "digest": "sha256:5d7d5e858a6266e02e628cdae20fd024c42f069a4d47699bcba3c4fbb9592796",
+          "expires_at": "2027-01-15T09:46:05Z",
+          "id": 12096519534,
+          "name": "emulated-evidence-i686-unknown-linux-gnu",
+          "size_in_bytes": 1878
+        },
+        {
+          "created_at": "2026-10-17T09:48:37Z",
+          "digest": "sha256:edb6c481c8920e7c71fb7d34cd3243b9e3f2f3cc5c0e0dadf53f1a828400243e",
+          "expires_at": "2027-01-15T09:46:05Z",
+          "id": 12096314414,
+          "name": "native-evidence-aarch64-apple-darwin",
+          "size_in_bytes": 1401
+        }
+      ],
+      "conclusion": "success",
+      "id": 39022373134,
+      "jobs": [
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567661",
+          "id": 117366567661,
+          "name": "dependency security audit"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567684",
+          "id": 117366567684,
+          "name": "native aarch64-unknown-linux-gnu"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release shared fixtures under emulation"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567689",
+          "id": 117366567689,
+          "name": "emulated s390x-unknown-linux-gnu"
+        },
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567695",
+          "id": 117366567695,
+          "name": "formatting and lints"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release shared fixtures under emulation"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567702",
+          "id": 117366567702,
+          "name": "emulated armv7-unknown-linux-gnueabihf"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567704",
+          "id": 117366567704,
+          "name": "native x86_64-apple-darwin"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567705",
+          "id": 117366567705,
+          "name": "native x86_64-pc-windows-msvc"
+        },
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567706",
+          "id": 117366567706,
+          "name": "policy fuzz smoke test"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release shared fixtures under emulation"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567708",
+          "id": 117366567708,
+          "name": "emulated i686-unknown-linux-gnu"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567720",
+          "id": 117366567720,
+          "name": "native aarch64-apple-darwin"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567741",
+          "id": 117366567741,
+          "name": "native x86_64-unknown-linux-gnu"
+        },
+        {
+          "conclusion": "success",
+          "execution_step": {
+            "conclusion": "success",
+            "name": "Execute debug and release workspace tests with native evidence"
+          },
+          "html_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134/job/117366567766",
+          "id": 117366567766,
+          "name": "native aarch64-pc-windows-msvc"
+        }
+      ],
+      "run_attempt": 1,
+      "tested_commit": "fd01cbcaa161d88a357dcdba93cb2e401e47846e",
+      "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134"
+    }
+  ],
+  "schema_version": 1,
+  "verification_method": "GitHub REST run/job conclusions and explicit successful execution steps; committed harness validates runtime identity and both test profiles."
+}

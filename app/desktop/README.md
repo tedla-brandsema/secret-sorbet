@@ -2,6 +2,10 @@
 
 This directory is reserved for the Tauri 2 desktop application.
 
+The desktop UI is not implemented. Shared-library compatibility and runtime
+requirements are documented in the [v1 support contract](../../docs/support.md);
+library execution evidence does not establish a shipped desktop UI or binding.
+
 The desktop app should target Windows, macOS, and Linux while calling the Rust
 crates under `lib/` directly.
 
@@ -16,4 +20,3 @@ First milestone:
 ```text
 desktop UI input -> lib/pw -> pinned test-vector output
 ```
-

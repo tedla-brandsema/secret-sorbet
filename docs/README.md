@@ -7,6 +7,9 @@ Store repository documentation under `docs/` and implementation plans under
 scope and acceptance; code, tests, and recorded verification establish what is
 shipped.
 
+The [support contract](support.md) defines runtime limits, byte-exact input rules,
+recovery guidance, and target-specific verification evidence.
+
 ## Architecture boundaries
 
 - `lib/core` owns deterministic derivation, canonical context encoding, the KDF,

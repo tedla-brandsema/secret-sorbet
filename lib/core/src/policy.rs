@@ -1,5 +1,11 @@
 use crate::Error;
 
+/// Ordered ASCII alphabet and minimum count for a required output class.
+///
+/// The name and raw character string (including duplicates) enter the context.
+/// Labels may be empty or Unicode; alphabets must be nonempty ASCII. ASCII control
+/// bytes are accepted, so callers needing printable output must choose printable
+/// alphabets. Validation occurs when deriving or encoding.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CharacterClass {
     pub name: String,
@@ -8,6 +14,7 @@ pub struct CharacterClass {
 }
 
 impl CharacterClass {
+    /// Store class metadata without validation; order and duplicates are preserved.
     pub fn new(name: impl Into<String>, chars: impl Into<String>, min_count: usize) -> Self {
         Self {
             name: name.into(),
@@ -17,6 +24,13 @@ impl CharacterClass {
     }
 }
 
+/// Caller-owned, ordered output contract; every field enters v1 derivation.
+///
+/// Length must be positive and fit target memory. Required counts are summed with
+/// overflow checking and must not exceed length. Every class character must be in
+/// the effective allowed alphabet, even when its minimum count is zero. `None`
+/// selects class-union mode; `Some` selects an explicit alphabet and a different
+/// context even when their effective alphabets match.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct OutputPolicy {
     pub length: usize,
@@ -25,6 +39,10 @@ pub struct OutputPolicy {
 }
 
 impl OutputPolicy {
+    /// Return the nonempty ASCII alphabet, preserving each byte's first occurrence.
+    ///
+    /// Returns an empty/non-ASCII charset error for invalid effective alphabets.
+    /// This checks the alphabet only, not output length or required-class counts.
     pub fn allowed_chars(&self) -> Result<Vec<u8>, Error> {
         let allowed = match &self.allowed {
             Some(chars) => chars.clone(),

@@ -33,6 +33,9 @@ awaiting release. Planned portability work is tracked in the
   lockfile, fixture, and command-status metadata.
 - Emulated debug/release core and password fixture jobs for GNU Linux i686,
   ARMv7, and big-endian s390x, with QEMU runtime identity and setup provenance.
+- An explicit v1 support/input/recovery contract and public API documentation
+  covering exact Unicode bytes, whitespace/case rules, memory/thread requirements,
+  and the distinction between shared-library evidence and planned applications.
 - Repository documentation conventions, an implementation plan, and a
   canonical TODO list linked to the roadmap.
 

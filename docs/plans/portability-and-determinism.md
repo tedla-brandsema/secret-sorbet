@@ -7,7 +7,15 @@ phase and slice progress, the checkbox legend, and completion evidence.
 [documentation index](../README.md) explains repository conventions.
 New plans belong in `docs/plans/`. Do not maintain progress checkboxes here.
 
-## Evidence and scope
+The current authorized delivery ends at Phase 2 (P01–P05). P06 and P07 are
+deferred at the user's request; their decision/device evidence is not required
+to close Phase 2. P08 remains the separate future release gate.
+
+## Baseline evidence and scope
+
+This section records the planning baseline at `7fd4ffc`, before implementation.
+Current status and execution evidence live in the roadmap and
+[support contract](../support.md).
 
 The current [core](../../lib/core/src/lib.rs) uses `std`, heap allocation,
 Argon2id v19 (65,536 KiB, three iterations, four lanes, 32-byte key), SHA-256

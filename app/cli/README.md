@@ -3,6 +3,10 @@
 The CLI is the first Secret Sorbet application. It provides local deterministic
 password generation through the shared `secret-sorbet-pw` crate and stores nothing.
 
+The [v1 support contract](../../docs/support.md) describes runtime requirements,
+Unicode input preparation, compatibility evidence, and recovery. Preserve exact
+passphrase bytes; the CLI does not normalize visually equivalent Unicode text.
+
 ## Build and run
 
 From the repository root:
