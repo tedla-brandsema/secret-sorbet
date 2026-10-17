@@ -60,6 +60,10 @@ history or discard unrelated work.
 
 ## Plans and progress
 
+The current implementation roadmap is
+[portability and deterministic derivation](plans/portability-and-determinism.md).
+Track its unfinished slices in the [canonical TODO](TODO.md).
+
 Use stable slice IDs, explicit dependencies, file ownership, acceptance checks,
 and documentation requirements. Record progress with these markers:
 
@@ -90,5 +94,5 @@ portability implementation slices.
 
 | Slice | Status | Outcome | Dependencies | Commit |
 | --- | --- | --- | --- | --- |
-| D01 | [>] | Rename the empty documentation directory and establish repository conventions | None | Pending |
-| D02 | [ ] | Review and save the portability plan and canonical backlog | D01 | Pending |
+| D01 | [x] | Rename the empty documentation directory and establish repository conventions | None | `f19a75b` |
+| D02 | [>] | Review and save the portability plan and canonical backlog | D01 | Pending |
