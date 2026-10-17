@@ -13,7 +13,6 @@ backlog items after recording their evidence and commit in the roadmap.
 
 | ID | Accepted work | Depends on |
 | --- | --- | --- |
-| [P01](ROADMAP.md#p01) | Fix >256 free-position nontermination with u64 big-endian sampling above 256; preserve all successful v1 bytes, including long no-required policies; extend bounded regression/fuzz tests. | — |
 | [P02](ROADMAP.md#p02) | Expand synthetic pinned full derivation and intermediate byte fixtures, raw/effective login fields, Unicode and invalid/boundary cases. | P01 for long policies |
 | [P03](ROADMAP.md#p03) | Document std/heap, 64 MiB plus overhead, dependency/thread and 32/64-bit requirements; v1 Unicode baseline and toolchain drift. | P02; final evidence P04/P05 |
 | [P04](ROADMAP.md#p04) | Execute debug/release fixtures on all six configured native desktop targets and retain evidence. | P02 |
@@ -30,7 +29,7 @@ approval and a subsequent plan; this TODO does not approve a compatibility
 change. P07 remains future work while mobile tooling/devices are unavailable;
 record specific partial evidence and remaining work instead of closing it.
 
-Recommended next slice: **P01**, before expanding long-policy coverage. Missing
+Active slice: **P02**, expanding pinned compatibility coverage. Missing
 required execution keeps the owning slice and release phase partial in the
 roadmap; record the exact remaining target/check here and do not treat documented
 limits as a waiver.

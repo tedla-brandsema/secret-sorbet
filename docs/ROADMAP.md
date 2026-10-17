@@ -29,24 +29,27 @@ under `Unreleased` in the implementation slice. An unfinished reconciliation
 must not imply a slice is complete.
 
 The authorized delivery boundary is the end of Phase 2 (P01–P05), including
-review, verification, commits, and pushes to `origin/main`. **Active: P01**.
+review, verification, commits, and pushes to `origin/main`. **Active: P02**.
 P06 and P07 are deferred at the user's request; P08 remains outside this run.
 Deferral does not establish Unicode-profile or mobile execution evidence.
 
 ## Phase 1 — Safety and byte contract
 
-- [~] Phase 1: P01 is active; P02 remains to complete the byte contract.
+- [~] Phase 1: P01 is complete; P02 is active to complete the byte contract.
 
 <a id="p01"></a>
 
-- [>] **P01 — Fix free-position selection nontermination.** Preserve all successful
+- [x] **P01 — Fix free-position selection nontermination.** Preserve all successful
   v1 outputs; add u64 big-endian sampling only above 256 and bounded regressions.
   Depends on: none. [Scope and acceptance](plans/portability-and-determinism.md#p01).
-  Completion evidence: none. Commit: none.
+  Independently reviewed; formatting, Clippy, serial workspace tests, both
+  dependency audits, six release encoder tests, and 10,000 policy fuzz runs passed.
+  The finite 257-position regression fails against the previous implementation.
+  Commit: `2cb25fe`.
 
 <a id="p02"></a>
 
-- [ ] **P02 — Pin synthetic compatibility contracts.** Expand raw/effective login,
+- [>] **P02 — Pin synthetic compatibility contracts.** Expand raw/effective login,
   intermediate byte, end-to-end, Unicode and invalid/boundary fixtures.
   Depends on: P01 for long-policy cases.
   [Scope and acceptance](plans/portability-and-determinism.md#p02).
