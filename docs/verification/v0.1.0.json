@@ -914,6 +914,983 @@
     "tested_head": "d21b4db787e68df2b18d7fc75c7f315a310c5ed0",
     "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39023700177"
   },
+  "candidate_ci": {
+    "artifact_payloads_inspected": true,
+    "conclusion": "success",
+    "jobs": [
+      {
+        "conclusion": "success",
+        "name": "formatting and lints",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164543"
+      },
+      {
+        "conclusion": "success",
+        "name": "emulated armv7-unknown-linux-gnueabihf",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164707"
+      },
+      {
+        "conclusion": "success",
+        "name": "emulated i686-unknown-linux-gnu",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164723"
+      },
+      {
+        "conclusion": "success",
+        "name": "dependency security audit",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164727"
+      },
+      {
+        "conclusion": "success",
+        "name": "emulated s390x-unknown-linux-gnu",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164728"
+      },
+      {
+        "conclusion": "success",
+        "name": "native x86_64-pc-windows-msvc",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164731"
+      },
+      {
+        "conclusion": "success",
+        "name": "policy fuzz smoke test",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164734"
+      },
+      {
+        "conclusion": "success",
+        "name": "native x86_64-unknown-linux-gnu",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164746"
+      },
+      {
+        "conclusion": "success",
+        "name": "native aarch64-apple-darwin",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164750"
+      },
+      {
+        "conclusion": "success",
+        "name": "native x86_64-apple-darwin",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164760"
+      },
+      {
+        "conclusion": "success",
+        "name": "native aarch64-pc-windows-msvc",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164780"
+      },
+      {
+        "conclusion": "success",
+        "name": "native aarch64-unknown-linux-gnu",
+        "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164920"
+      }
+    ],
+    "jobs_passed": 12,
+    "targets": [
+      {
+        "artifact": {
+          "created_at": "2026-10-17T10:41:12Z",
+          "digest": "sha256:7611358ce4abb084406d0efebcd4b78027689e5a6ec43209115ab95435b9241d",
+          "expires_at": "2027-01-15T10:33:38Z",
+          "id": 12098945522,
+          "name": "emulated-evidence-armv7-unknown-linux-gnueabihf"
+        },
+        "artifact_payload_sha256": "4decbe0e081b66c022ac8329f09ef5a66e3aec997e73a6ee6a1fb2e751be417c",
+        "checked_hashes": {
+          "Cargo.lock": {
+            "artifact_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e"
+          },
+          "test-vectors/README.md": {
+            "artifact_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f"
+          },
+          "test-vectors/default-login-v1.json": {
+            "artifact_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88"
+          },
+          "test-vectors/generate_synthetic.py": {
+            "artifact_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8"
+          },
+          "test-vectors/synthetic-core-v1.rs": {
+            "artifact_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9"
+          },
+          "test-vectors/synthetic-login-v1.json": {
+            "artifact_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1"
+          }
+        },
+        "emulation_setup": {
+          "cargo_environment": {
+            "CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_LINKER": "arm-linux-gnueabihf-gcc",
+            "CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_RUNNER": "qemu-arm -L /usr/arm-linux-gnueabihf"
+          },
+          "emulator_command": [
+            "qemu-arm",
+            "-L",
+            "/usr/arm-linux-gnueabihf"
+          ],
+          "emulator_version": "qemu-arm version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)\nCopyright (c) 2003-2023 Fabrice Bellard and the QEMU Project developers",
+          "linker": "arm-linux-gnueabihf-gcc",
+          "linker_version": "arm-linux-gnueabihf-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+          "sysroot": "/usr/arm-linux-gnueabihf",
+          "sysroot_runtime_sha256": {
+            "lib/ld-linux-armhf.so.3": "ffcc8d7e4e789f2e8c00657ad32d2435b33ecd2b1065b679f1f33d79d6014caf",
+            "lib/libc.so.6": "77692fccd3d6ba59432435e44b77b8e9d074300e8ccbccb5d57a8a25dd115e7c"
+          },
+          "system_packages": [
+            "gcc-arm-linux-gnueabihf=4:13.2.0-7ubuntu1",
+            "libc6-dev-armhf-cross=2.39-0ubuntu8cross1",
+            "qemu-user=1:8.2.2+ds-0ubuntu1.18"
+          ]
+        },
+        "execution": "emulated",
+        "execution_step_conclusion": "success",
+        "job_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164707",
+        "runner_image": {
+          "ImageOS": "ubuntu24",
+          "ImageVersion": "20261012.334.1"
+        },
+        "runner_label": "ubuntu-24.04",
+        "runtime": {
+          "arch": "arm",
+          "endian": "little",
+          "os": "linux",
+          "pointer_width": "32"
+        },
+        "rustc_vv": "rustc 1.98.0 (88d9e12ae 2026-08-18)\nbinary: rustc\ncommit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea\ncommit-date: 2026-08-18\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.0\nLLVM version: 22.1.8",
+        "target": "armv7-unknown-linux-gnueabihf",
+        "tested_head": "2c59ee545d8238aef9cb2a3e3896e85091a46839",
+        "tests": [
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "-p",
+              "secret-sorbet-core",
+              "-p",
+              "secret-sorbet-pw",
+              "--target",
+              "armv7-unknown-linux-gnueabihf",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "debug"
+          },
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "-p",
+              "secret-sorbet-core",
+              "-p",
+              "secret-sorbet-pw",
+              "--target",
+              "armv7-unknown-linux-gnueabihf",
+              "--release",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "release"
+          }
+        ]
+      },
+      {
+        "artifact": {
+          "created_at": "2026-10-17T10:42:57Z",
+          "digest": "sha256:59e54f4f3142576b914217a59c6297cf7f386bad49558bedfa684b2f9dabbb0a",
+          "expires_at": "2027-01-15T10:33:38Z",
+          "id": 12099010236,
+          "name": "emulated-evidence-i686-unknown-linux-gnu"
+        },
+        "artifact_payload_sha256": "61f9d4566e9c1ad5cdf0b3864d03f83a63627235ae99f968f9f3993b28e6ea37",
+        "checked_hashes": {
+          "Cargo.lock": {
+            "artifact_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e"
+          },
+          "test-vectors/README.md": {
+            "artifact_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f"
+          },
+          "test-vectors/default-login-v1.json": {
+            "artifact_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88"
+          },
+          "test-vectors/generate_synthetic.py": {
+            "artifact_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8"
+          },
+          "test-vectors/synthetic-core-v1.rs": {
+            "artifact_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9"
+          },
+          "test-vectors/synthetic-login-v1.json": {
+            "artifact_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1"
+          }
+        },
+        "emulation_setup": {
+          "cargo_environment": {
+            "CARGO_TARGET_I686_UNKNOWN_LINUX_GNU_LINKER": "i686-linux-gnu-gcc",
+            "CARGO_TARGET_I686_UNKNOWN_LINUX_GNU_RUNNER": "qemu-i386 -L /usr/i686-linux-gnu"
+          },
+          "emulator_command": [
+            "qemu-i386",
+            "-L",
+            "/usr/i686-linux-gnu"
+          ],
+          "emulator_version": "qemu-i386 version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)\nCopyright (c) 2003-2023 Fabrice Bellard and the QEMU Project developers",
+          "linker": "i686-linux-gnu-gcc",
+          "linker_version": "i686-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+          "sysroot": "/usr/i686-linux-gnu",
+          "sysroot_runtime_sha256": {
+            "lib/ld-linux.so.2": "2475ee4a5f8337f1d64054826f7867725709aaf500a74c171ee5e084b8ce31bc",
+            "lib/libc.so.6": "31f35ed4544db60e6d236b5a12ae4db9548c2d64be1bbd159ce7bba42b1f01aa"
+          },
+          "system_packages": [
+            "gcc-i686-linux-gnu=4:13.2.0-7ubuntu1",
+            "libc6-dev-i386-cross=2.39-0ubuntu8cross1",
+            "qemu-user=1:8.2.2+ds-0ubuntu1.18"
+          ]
+        },
+        "execution": "emulated",
+        "execution_step_conclusion": "success",
+        "job_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164723",
+        "runner_image": {
+          "ImageOS": "ubuntu24",
+          "ImageVersion": "20261012.334.1"
+        },
+        "runner_label": "ubuntu-24.04",
+        "runtime": {
+          "arch": "x86",
+          "endian": "little",
+          "os": "linux",
+          "pointer_width": "32"
+        },
+        "rustc_vv": "rustc 1.98.0 (88d9e12ae 2026-08-18)\nbinary: rustc\ncommit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea\ncommit-date: 2026-08-18\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.0\nLLVM version: 22.1.8",
+        "target": "i686-unknown-linux-gnu",
+        "tested_head": "2c59ee545d8238aef9cb2a3e3896e85091a46839",
+        "tests": [
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "-p",
+              "secret-sorbet-core",
+              "-p",
+              "secret-sorbet-pw",
+              "--target",
+              "i686-unknown-linux-gnu",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "debug"
+          },
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "-p",
+              "secret-sorbet-core",
+              "-p",
+              "secret-sorbet-pw",
+              "--target",
+              "i686-unknown-linux-gnu",
+              "--release",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "release"
+          }
+        ]
+      },
+      {
+        "artifact": {
+          "created_at": "2026-10-17T10:43:47Z",
+          "digest": "sha256:0af9423cb82c188f35482f56c6525fc2f00adf657652a6e47a7ab93b95c87497",
+          "expires_at": "2027-01-15T10:33:38Z",
+          "id": 12098766010,
+          "name": "emulated-evidence-s390x-unknown-linux-gnu"
+        },
+        "artifact_payload_sha256": "549c26093d1d7e86061523c5b47afccc785c9e245e10c022edd46c39b25c672f",
+        "checked_hashes": {
+          "Cargo.lock": {
+            "artifact_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e"
+          },
+          "test-vectors/README.md": {
+            "artifact_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f"
+          },
+          "test-vectors/default-login-v1.json": {
+            "artifact_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88"
+          },
+          "test-vectors/generate_synthetic.py": {
+            "artifact_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8"
+          },
+          "test-vectors/synthetic-core-v1.rs": {
+            "artifact_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9"
+          },
+          "test-vectors/synthetic-login-v1.json": {
+            "artifact_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1"
+          }
+        },
+        "emulation_setup": {
+          "cargo_environment": {
+            "CARGO_TARGET_S390X_UNKNOWN_LINUX_GNU_LINKER": "s390x-linux-gnu-gcc",
+            "CARGO_TARGET_S390X_UNKNOWN_LINUX_GNU_RUNNER": "qemu-s390x -L /usr/s390x-linux-gnu"
+          },
+          "emulator_command": [
+            "qemu-s390x",
+            "-L",
+            "/usr/s390x-linux-gnu"
+          ],
+          "emulator_version": "qemu-s390x version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)\nCopyright (c) 2003-2023 Fabrice Bellard and the QEMU Project developers",
+          "linker": "s390x-linux-gnu-gcc",
+          "linker_version": "s390x-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+          "sysroot": "/usr/s390x-linux-gnu",
+          "sysroot_runtime_sha256": {
+            "lib/ld64.so.1": "8ef05b277d97d5445ac7ab91b30b6b25307a57d50afa90dd56801c8fb434d8b8",
+            "lib/libc.so.6": "9eb0781846611c2f92ea835f4fcfca0ef6aaef0671193ec81086139d9073a104"
+          },
+          "system_packages": [
+            "gcc-s390x-linux-gnu=4:13.2.0-7ubuntu1",
+            "libc6-dev-s390x-cross=2.39-0ubuntu8cross1",
+            "qemu-user=1:8.2.2+ds-0ubuntu1.18"
+          ]
+        },
+        "execution": "emulated",
+        "execution_step_conclusion": "success",
+        "job_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164728",
+        "runner_image": {
+          "ImageOS": "ubuntu24",
+          "ImageVersion": "20261012.334.1"
+        },
+        "runner_label": "ubuntu-24.04",
+        "runtime": {
+          "arch": "s390x",
+          "endian": "big",
+          "os": "linux",
+          "pointer_width": "64"
+        },
+        "rustc_vv": "rustc 1.98.0 (88d9e12ae 2026-08-18)\nbinary: rustc\ncommit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea\ncommit-date: 2026-08-18\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.0\nLLVM version: 22.1.8",
+        "target": "s390x-unknown-linux-gnu",
+        "tested_head": "2c59ee545d8238aef9cb2a3e3896e85091a46839",
+        "tests": [
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "-p",
+              "secret-sorbet-core",
+              "-p",
+              "secret-sorbet-pw",
+              "--target",
+              "s390x-unknown-linux-gnu",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "debug"
+          },
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "-p",
+              "secret-sorbet-core",
+              "-p",
+              "secret-sorbet-pw",
+              "--target",
+              "s390x-unknown-linux-gnu",
+              "--release",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "release"
+          }
+        ]
+      },
+      {
+        "artifact": {
+          "created_at": "2026-10-17T10:37:09Z",
+          "digest": "sha256:3be33e86158ca4ecf2b09d185ef2b87ec71389bd4df6643f4eb259d6dfa5021d",
+          "expires_at": "2027-01-15T10:33:38Z",
+          "id": 12098178248,
+          "name": "native-evidence-aarch64-apple-darwin"
+        },
+        "artifact_payload_sha256": "de1d9c300e8ca35490ad7fe355886ef743c54476d3696aeb458e4e31a0e84a79",
+        "checked_hashes": {
+          "Cargo.lock": {
+            "artifact_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e"
+          },
+          "test-vectors/README.md": {
+            "artifact_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f"
+          },
+          "test-vectors/default-login-v1.json": {
+            "artifact_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88"
+          },
+          "test-vectors/generate_synthetic.py": {
+            "artifact_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8"
+          },
+          "test-vectors/synthetic-core-v1.rs": {
+            "artifact_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9"
+          },
+          "test-vectors/synthetic-login-v1.json": {
+            "artifact_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1"
+          }
+        },
+        "emulation_setup": null,
+        "execution": "native",
+        "execution_step_conclusion": "success",
+        "job_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164750",
+        "runner_image": {
+          "ImageOS": "macos15",
+          "ImageVersion": "20260907.0337.1"
+        },
+        "runner_label": "macos-15",
+        "runtime": {
+          "arch": "aarch64",
+          "endian": "little",
+          "os": "macos",
+          "pointer_width": "64"
+        },
+        "rustc_vv": "rustc 1.98.0 (88d9e12ae 2026-08-18)\nbinary: rustc\ncommit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea\ncommit-date: 2026-08-18\nhost: aarch64-apple-darwin\nrelease: 1.98.0\nLLVM version: 22.1.8",
+        "target": "aarch64-apple-darwin",
+        "tested_head": "2c59ee545d8238aef9cb2a3e3896e85091a46839",
+        "tests": [
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "aarch64-apple-darwin",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "debug"
+          },
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "aarch64-apple-darwin",
+              "--release",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "release"
+          }
+        ]
+      },
+      {
+        "artifact": {
+          "created_at": "2026-10-17T10:36:38Z",
+          "digest": "sha256:6452a23a98bb945ec6e6457c225d04a38b6d387ea2464fa4c17335988e340d78",
+          "expires_at": "2027-01-15T10:33:38Z",
+          "id": 12098560848,
+          "name": "native-evidence-aarch64-pc-windows-msvc"
+        },
+        "artifact_payload_sha256": "76ea3c4799e68c49ccff8a315e17f27734ed9a3c74b393b88dae6103de4dded9",
+        "checked_hashes": {
+          "Cargo.lock": {
+            "artifact_sha256": "ce5bfdfddcc5d1d1b0e1fdfcaf941f20622039eb7d4471495bb6f73f27bf66ab",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e"
+          },
+          "test-vectors/README.md": {
+            "artifact_sha256": "e1ddeaa4492f3342ba205f792b583f0fb1d7d1d96b28cdf02a0df1209dd709e1",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f"
+          },
+          "test-vectors/default-login-v1.json": {
+            "artifact_sha256": "f2a74db4ef3120cfb15820d6d3ba0439ab5a63e1f968cf66a4a0d65438aed58c",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88"
+          },
+          "test-vectors/generate_synthetic.py": {
+            "artifact_sha256": "dc52bcf690c94492e42d938444a4138c088da8fb1ad4c76447d78f8e5e313b1f",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8"
+          },
+          "test-vectors/synthetic-core-v1.rs": {
+            "artifact_sha256": "5f60afd5099fcebeb3fdac6a2439bbe487786cdb28e2f3ccc958b38b10d1db8b",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9"
+          },
+          "test-vectors/synthetic-login-v1.json": {
+            "artifact_sha256": "19fef5300776530ccf39cb556eed2d4283bdf20e7984d559d673839e7c802685",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1"
+          }
+        },
+        "emulation_setup": null,
+        "execution": "native",
+        "execution_step_conclusion": "success",
+        "job_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164780",
+        "runner_image": {
+          "ImageOS": "win11-vs2026-arm64",
+          "ImageVersion": "20261013.183.4"
+        },
+        "runner_label": "windows-11-arm",
+        "runtime": {
+          "arch": "aarch64",
+          "endian": "little",
+          "os": "windows",
+          "pointer_width": "64"
+        },
+        "rustc_vv": "rustc 1.98.0 (88d9e12ae 2026-08-18)\nbinary: rustc\ncommit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea\ncommit-date: 2026-08-18\nhost: aarch64-pc-windows-msvc\nrelease: 1.98.0\nLLVM version: 22.1.8",
+        "target": "aarch64-pc-windows-msvc",
+        "tested_head": "2c59ee545d8238aef9cb2a3e3896e85091a46839",
+        "tests": [
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "aarch64-pc-windows-msvc",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "debug"
+          },
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "aarch64-pc-windows-msvc",
+              "--release",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "release"
+          }
+        ]
+      },
+      {
+        "artifact": {
+          "created_at": "2026-10-17T10:36:04Z",
+          "digest": "sha256:961aabb808622661ee61e65254201860f2fa3ad8152dab8685fc5d7bea4fea9f",
+          "expires_at": "2027-01-15T10:33:38Z",
+          "id": 12098042368,
+          "name": "native-evidence-aarch64-unknown-linux-gnu"
+        },
+        "artifact_payload_sha256": "7e04592211ba2be3eb5ae52c57e590688b90dcfa418e3e136c07b557a27566b7",
+        "checked_hashes": {
+          "Cargo.lock": {
+            "artifact_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e"
+          },
+          "test-vectors/README.md": {
+            "artifact_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f"
+          },
+          "test-vectors/default-login-v1.json": {
+            "artifact_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88"
+          },
+          "test-vectors/generate_synthetic.py": {
+            "artifact_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8"
+          },
+          "test-vectors/synthetic-core-v1.rs": {
+            "artifact_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9"
+          },
+          "test-vectors/synthetic-login-v1.json": {
+            "artifact_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1"
+          }
+        },
+        "emulation_setup": null,
+        "execution": "native",
+        "execution_step_conclusion": "success",
+        "job_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164920",
+        "runner_image": {
+          "ImageOS": "ubuntu24-arm64",
+          "ImageVersion": "20261012.149.1"
+        },
+        "runner_label": "ubuntu-24.04-arm",
+        "runtime": {
+          "arch": "aarch64",
+          "endian": "little",
+          "os": "linux",
+          "pointer_width": "64"
+        },
+        "rustc_vv": "rustc 1.98.0 (88d9e12ae 2026-08-18)\nbinary: rustc\ncommit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea\ncommit-date: 2026-08-18\nhost: aarch64-unknown-linux-gnu\nrelease: 1.98.0\nLLVM version: 22.1.8",
+        "target": "aarch64-unknown-linux-gnu",
+        "tested_head": "2c59ee545d8238aef9cb2a3e3896e85091a46839",
+        "tests": [
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "aarch64-unknown-linux-gnu",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "debug"
+          },
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "aarch64-unknown-linux-gnu",
+              "--release",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "release"
+          }
+        ]
+      },
+      {
+        "artifact": {
+          "created_at": "2026-10-17T10:39:52Z",
+          "digest": "sha256:b4f4e11a602b68d77ef4f097b9ada2594909d01dc01683f60c1e569756206a47",
+          "expires_at": "2027-01-15T10:33:38Z",
+          "id": 12098451399,
+          "name": "native-evidence-x86_64-apple-darwin"
+        },
+        "artifact_payload_sha256": "7e941595dd0f1529bdd1f286c9b49cd0b5b5b3bd0359bbb4c607c2bff86d47fb",
+        "checked_hashes": {
+          "Cargo.lock": {
+            "artifact_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e"
+          },
+          "test-vectors/README.md": {
+            "artifact_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f"
+          },
+          "test-vectors/default-login-v1.json": {
+            "artifact_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88"
+          },
+          "test-vectors/generate_synthetic.py": {
+            "artifact_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8"
+          },
+          "test-vectors/synthetic-core-v1.rs": {
+            "artifact_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9"
+          },
+          "test-vectors/synthetic-login-v1.json": {
+            "artifact_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1"
+          }
+        },
+        "emulation_setup": null,
+        "execution": "native",
+        "execution_step_conclusion": "success",
+        "job_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164760",
+        "runner_image": {
+          "ImageOS": "macos15",
+          "ImageVersion": "20260824.0482.1"
+        },
+        "runner_label": "macos-15-intel",
+        "runtime": {
+          "arch": "x86_64",
+          "endian": "little",
+          "os": "macos",
+          "pointer_width": "64"
+        },
+        "rustc_vv": "rustc 1.98.0 (88d9e12ae 2026-08-18)\nbinary: rustc\ncommit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea\ncommit-date: 2026-08-18\nhost: x86_64-apple-darwin\nrelease: 1.98.0\nLLVM version: 22.1.8",
+        "target": "x86_64-apple-darwin",
+        "tested_head": "2c59ee545d8238aef9cb2a3e3896e85091a46839",
+        "tests": [
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "x86_64-apple-darwin",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "debug"
+          },
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "x86_64-apple-darwin",
+              "--release",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "release"
+          }
+        ]
+      },
+      {
+        "artifact": {
+          "created_at": "2026-10-17T10:37:12Z",
+          "digest": "sha256:5b588f2b788479299d349a4b7962d3a63cf00600ce142cda085caa9b92e1d58d",
+          "expires_at": "2027-01-15T10:33:38Z",
+          "id": 12098461238,
+          "name": "native-evidence-x86_64-pc-windows-msvc"
+        },
+        "artifact_payload_sha256": "022fdb7c17dd1aba6d3f7f575239d9a51fbefca20535907fc2f81ac935459c0a",
+        "checked_hashes": {
+          "Cargo.lock": {
+            "artifact_sha256": "ce5bfdfddcc5d1d1b0e1fdfcaf941f20622039eb7d4471495bb6f73f27bf66ab",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e"
+          },
+          "test-vectors/README.md": {
+            "artifact_sha256": "e1ddeaa4492f3342ba205f792b583f0fb1d7d1d96b28cdf02a0df1209dd709e1",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f"
+          },
+          "test-vectors/default-login-v1.json": {
+            "artifact_sha256": "f2a74db4ef3120cfb15820d6d3ba0439ab5a63e1f968cf66a4a0d65438aed58c",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88"
+          },
+          "test-vectors/generate_synthetic.py": {
+            "artifact_sha256": "dc52bcf690c94492e42d938444a4138c088da8fb1ad4c76447d78f8e5e313b1f",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8"
+          },
+          "test-vectors/synthetic-core-v1.rs": {
+            "artifact_sha256": "5f60afd5099fcebeb3fdac6a2439bbe487786cdb28e2f3ccc958b38b10d1db8b",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9"
+          },
+          "test-vectors/synthetic-login-v1.json": {
+            "artifact_sha256": "19fef5300776530ccf39cb556eed2d4283bdf20e7984d559d673839e7c802685",
+            "checkout_conversion": "LF-to-CRLF checkout conversion",
+            "local_lf_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1"
+          }
+        },
+        "emulation_setup": null,
+        "execution": "native",
+        "execution_step_conclusion": "success",
+        "job_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164731",
+        "runner_image": {
+          "ImageOS": "win25-vs2026",
+          "ImageVersion": "20261007.264.1"
+        },
+        "runner_label": "windows-2025",
+        "runtime": {
+          "arch": "x86_64",
+          "endian": "little",
+          "os": "windows",
+          "pointer_width": "64"
+        },
+        "rustc_vv": "rustc 1.98.0 (88d9e12ae 2026-08-18)\nbinary: rustc\ncommit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea\ncommit-date: 2026-08-18\nhost: x86_64-pc-windows-msvc\nrelease: 1.98.0\nLLVM version: 22.1.8",
+        "target": "x86_64-pc-windows-msvc",
+        "tested_head": "2c59ee545d8238aef9cb2a3e3896e85091a46839",
+        "tests": [
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "x86_64-pc-windows-msvc",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "debug"
+          },
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "x86_64-pc-windows-msvc",
+              "--release",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "release"
+          }
+        ]
+      },
+      {
+        "artifact": {
+          "created_at": "2026-10-17T10:36:51Z",
+          "digest": "sha256:15f0dd3c5ea1d521c34615a166727b5893111171c3ce88c44e385ceb8ffbe641",
+          "expires_at": "2027-01-15T10:33:38Z",
+          "id": 12098570936,
+          "name": "native-evidence-x86_64-unknown-linux-gnu"
+        },
+        "artifact_payload_sha256": "b98ca79d6de2d5fd0876cf7ef4474274e94dbdf8de870d0e03c717be480ae8ec",
+        "checked_hashes": {
+          "Cargo.lock": {
+            "artifact_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "2aa309e8da874a63fdfbe9273eb3d470449f07bc0534ce4a0bde7d2391dfd81e"
+          },
+          "test-vectors/README.md": {
+            "artifact_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "607d8ed672ec4a3843888dd74cded28fa8a6fedcf36dddf299dea2aef179635f"
+          },
+          "test-vectors/default-login-v1.json": {
+            "artifact_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "ad20b3411a9a1c5599a5746fe0e11ccbf8217c9c74b3132802faf7737e1f9b88"
+          },
+          "test-vectors/generate_synthetic.py": {
+            "artifact_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "c78135ab6e3a84f18e59628f9d82947c42288c5b50505393d262eaff20e8b8a8"
+          },
+          "test-vectors/synthetic-core-v1.rs": {
+            "artifact_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "fffc4d720b7232905c77504bafcc23112854b8193d39eb023c3dfda61b96ede9"
+          },
+          "test-vectors/synthetic-login-v1.json": {
+            "artifact_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1",
+            "checkout_conversion": "none",
+            "local_lf_sha256": "26abcdca0f2d473e883ec66b2fd42bc9a6c40cddd638038dd86455202b93e9b1"
+          }
+        },
+        "emulation_setup": null,
+        "execution": "native",
+        "execution_step_conclusion": "success",
+        "job_url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770/job/117375164746",
+        "runner_image": {
+          "ImageOS": "ubuntu24",
+          "ImageVersion": "20261012.334.1"
+        },
+        "runner_label": "ubuntu-24.04",
+        "runtime": {
+          "arch": "x86_64",
+          "endian": "little",
+          "os": "linux",
+          "pointer_width": "64"
+        },
+        "rustc_vv": "rustc 1.98.0 (88d9e12ae 2026-08-18)\nbinary: rustc\ncommit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea\ncommit-date: 2026-08-18\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.0\nLLVM version: 22.1.8",
+        "target": "x86_64-unknown-linux-gnu",
+        "tested_head": "2c59ee545d8238aef9cb2a3e3896e85091a46839",
+        "tests": [
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "x86_64-unknown-linux-gnu",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "debug"
+          },
+          {
+            "command": [
+              "cargo",
+              "test",
+              "--locked",
+              "--workspace",
+              "--target",
+              "x86_64-unknown-linux-gnu",
+              "--release",
+              "--",
+              "--test-threads=1"
+            ],
+            "exit_code": 0,
+            "profile": "release"
+          }
+        ]
+      }
+    ],
+    "tested_head": "2c59ee545d8238aef9cb2a3e3896e85091a46839",
+    "url": "https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39025358770"
+  },
   "limitations": [
     "P06 NFC and P07 mobile verification remain deferred; broader P08 remains open",
     "Native CI verifies suites, not actual OS clipboard-manager or interactive terminal integration",
@@ -992,11 +1969,34 @@
       "result": "passed"
     }
   ],
-  "publication_gate": "R03 still requires complete CI success on the exact tagged candidate, review of release body, and verification of remote tag/release identity.",
+  "publication": {
+    "annotated_tag": true,
+    "body_sha256": "939f6c257be76fbf38ae49589aaab47254a7fae138827ce53cb44092c06f6e06",
+    "checks": [
+      "Annotated remote tag object matches local tag and points to exact successful candidate",
+      "Exactly one draft found and its body matched the reviewed notes before publication",
+      "Published release ID, tag, body, status, latest-release ID and date verified through GitHub API",
+      "Source archive links present; no binary assets or registry publication"
+    ],
+    "draft": false,
+    "draft_lookup_note": "GitHub published-tag endpoint returned HTTP 404 for the draft; draft was retrieved and verified by ID through the authenticated release list before publishing.",
+    "latest_release_id_verified": 415747405,
+    "prerelease": false,
+    "published_at": "2026-10-17T10:46:07Z",
+    "release_id": 415747405,
+    "source_tarball_url": "https://api.github.com/repos/tedla-brandsema/secret-sorbet/tarball/v0.1.0",
+    "source_zipball_url": "https://api.github.com/repos/tedla-brandsema/secret-sorbet/zipball/v0.1.0",
+    "tag": "v0.1.0",
+    "tag_commit": "2c59ee545d8238aef9cb2a3e3896e85091a46839",
+    "tag_object_sha": "ac92909ee301b848d22639fdeb16ae9ff7e4d4f9",
+    "uploaded_asset_count": 0,
+    "url": "https://github.com/tedla-brandsema/secret-sorbet/releases/tag/v0.1.0"
+  },
+  "publication_gate": "R03 exact-candidate CI, artifact inspection, independent review and remote tag/release verification succeeded. Roadmap commit reconciliation records completion separately.",
   "release": "v0.1.0",
   "review": {
     "external_security_audit": false,
-    "source_and_release_documentation": "Independent adversarial source, documentation, evidence and intended release-body review approved; no material release blocker remains. Exact-candidate CI and remote publication verification remain R03 gates."
+    "source_and_release_documentation": "Independent adversarial source, documentation, evidence, final release-body and exact-candidate prepublication reviews approved; no material release blocker remains."
   },
   "runtime_build_and_fixture_files_sha256": {
     ".cargo/audit.toml": "0035ee41c75738982e402f1e46451aa9f010aa25aed77ce3b3a4e09b44716f4b",

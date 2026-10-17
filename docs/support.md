@@ -5,10 +5,13 @@ Rust does not establish Secret Sorbet compatibility or application availability.
 The [roadmap](ROADMAP.md) records implementation progress; execution evidence
 below determines verified coverage.
 
-Version 0.1.0 is an initial-development source release. The execution evidence
+Version 0.1.0 is an initial development source release. The execution evidence
 below applies to the specific tested revision and does not establish universal
 platform support or an external security audit. See the
 [security policy](../SECURITY.md).
+The [release verification record](verification/v0.1.0.md) records the exact
+`v0.1.0` candidate CI and publication identities separately from the historical
+compatibility snapshot below.
 
 ## Runtime and toolchain requirements
 

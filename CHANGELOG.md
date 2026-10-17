@@ -68,3 +68,5 @@ verification remain deferred.
 - Custom policies longer than 256 characters can now place required character
   classes instead of looping indefinitely. Existing successful v1 outputs retain
   their byte mapping, including long policies with no required positions.
+
+[0.1.0]: https://github.com/tedla-brandsema/secret-sorbet/releases/tag/v0.1.0

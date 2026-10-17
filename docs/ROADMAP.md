@@ -145,7 +145,7 @@ The user authorized publication of `v0.1.0`; the
 [release plan](plans/v0.1.0-release.md) defines its scope and verification.
 This scoped release does not close P06, P07, or P08.
 
-- [~] Release delivery: exact candidate CI and publication remain.
+- [~] Release delivery: publication evidence review and commit reconciliation remain.
 - [x] **R01 — Prepare release metadata and scope.** Reconcile changelog, source
   installation and security/support documentation. Depends on: P01–P05 and
   user release authorization. Independently reviewed; 69 local documentation
@@ -154,7 +154,7 @@ This scoped release does not close P06, P07, or P08.
 - [x] **R02 — Verify and review the source release.** Run local gates, inspect
   all nine CI execution artifacts, and resolve independent release review.
   Depends on: R01 draft. [Recorded checks](verification/v0.1.0.md) distinguish
-  baseline artifacts from the exact candidate CI still required before tagging.
+  baseline artifacts from the later exact candidate CI required by R03.
   Independent source, documentation, payload and release-body review approved.
   All local gates passed: 68 tests per debug/release profile, 13 harness tests,
   10,000 fuzz runs, both audits, fixture reproduction, isolated tagged-source
@@ -163,6 +163,11 @@ This scoped release does not close P06, P07, or P08.
 - [>] **R03 — Tag and publish v0.1.0.** Require exact candidate CI success;
   create an annotated tag, review the draft release, publish and verify remote
   tag/release identity. Depends on: reviewed, verified and committed R01/R02.
+  Published [v0.1.0](https://github.com/tedla-brandsema/secret-sorbet/releases/tag/v0.1.0)
+  at tagged commit `2c59ee5` after all 12 exact-candidate jobs passed. Remote
+  annotated tag, inspected draft notes, published/latest status, release ID
+  `415747405`, date and archive links verified. Publication evidence review and
+  commit reconciliation remain before marking this slice complete.
 
 ## Documentation delivery
 
