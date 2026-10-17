@@ -30,6 +30,10 @@ the matrix checkmarks do not update automatically.
   design notes. Their UIs and bindings are planned, not implemented or verified.
 - `test-vectors` contains synthetic compatibility fixtures. Never replace a
   fixture with production credentials or regenerate expected values in a test.
+- [Brand assets](../assets/brand/README.md) contain canonical artwork and
+  generated icons shared by future applications. The asset guide defines
+  regeneration and integration limits;
+  asset preparation does not implement or verify an application.
 
 Dependencies flow from applications to password helpers to the core. Platform
 adapters must not independently reimplement derivation or change inputs without

@@ -5,6 +5,11 @@ This changelog tracks notable changes. Planned work remains in the
 
 ## Unreleased
 
+### Added
+
+- Optimized repository artwork and reusable app, browser-extension and favicon
+  assets, with ImageMagick regeneration instructions.
+
 ## [0.1.0] - 2026-10-17
 
 Initial development source release for the shared Rust libraries and CLI. No

@@ -30,7 +30,7 @@ must not imply a slice is complete.
 
 The authorized delivery through Phase 2 (P01–P05) is complete: implementation,
 review, verification, and commits are recorded below. The separately authorized
-`v0.1.0` development source release is published; no slice is active.
+`v0.1.0` development source release is published; B01 is active below.
 P06 and P07 remain deferred; the broader P08 portability gate remains open.
 Deferral does not establish Unicode-profile or mobile execution evidence.
 
@@ -169,6 +169,14 @@ This scoped release does not close P06, P07, or P08.
   `415747405`, date and archive links verified. Independent prepublication and
   publication-evidence reviews approved; 77 local documentation links/anchors,
   body/candidate/tag identity and diff checks passed. Evidence commit: `11d9338`.
+
+## Branding assets
+
+- [>] **B01 — Optimize artwork and prepare application icons.** Preserve the
+  supplied artwork, create app/browser/favicon assets with ImageMagick, document
+  reproduction, verify containers and pixels, then remove the temporary root
+  copy. Depends on: user-supplied PNG. [Scope](plans/branding-assets.md).
+  Assets remain separate from the planned applications and mobile verification.
 
 ## Documentation delivery
 
