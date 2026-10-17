@@ -28,8 +28,8 @@ lands. Update the root [changelog](../CHANGELOG.md) with release-relevant change
 under `Unreleased` in the implementation slice. An unfinished reconciliation
 must not imply a slice is complete.
 
-The authorized delivery boundary is the end of Phase 2 (P01–P05), including
-review, verification, commits, and pushes to `origin/main`. **Active: P03**.
+The authorized delivery through Phase 2 (P01–P05) is complete: implementation,
+review, verification, and commits are recorded below. No slice is active.
 P06 and P07 are deferred at the user's request; P08 remains outside this run.
 Deferral does not establish Unicode-profile or mobile execution evidence.
 
@@ -60,17 +60,22 @@ Deferral does not establish Unicode-profile or mobile execution evidence.
 
 ## Phase 2 — Portable execution evidence
 
-- [~] Phase 2: P04 and P05 are complete; P03 is finalizing the support contract
-  with their observed execution evidence.
+- [x] Phase 2: P03, P04, and P05 are reviewed, verified, and committed.
 
 <a id="p03"></a>
 
-- [>] **P03 — Publish support requirements and v1 Unicode behavior.** Document
+- [x] **P03 — Publish support requirements and v1 Unicode behavior.** Document
   std/heap, memory overhead, dependency/thread and 32/64-bit requirements.
   Depends on: P02; documentation may be drafted while execution is pending,
   with final evidence references completed after P04/P05 (no execution cycle).
   [Scope and acceptance](plans/portability-and-determinism.md#p03).
-  Completion evidence: none. Commit: none.
+  The [support contract](support.md) links all nine passing target jobs and the
+  [durable snapshot](verification/phase-2.json). Independent slice and phase
+  reviews found no remaining material blockers. Final formatting, Clippy,
+  68 debug/release workspace tests, rustdoc with warnings denied, both dependency
+  audits, 13 harness regressions, and 10,000 bounded policy fuzz runs passed.
+  Local documentation links/anchors and committed fixture identities were checked.
+  Commit: `0c7711c`.
 
 <a id="p04"></a>
 
