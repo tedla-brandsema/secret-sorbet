@@ -77,6 +77,10 @@ production quality.
 
 - Documentation inside and outside code is part of the implementation and must
   be updated in the same change as the behavior it describes.
+- Record release-relevant changes in the root `CHANGELOG.md` under `Unreleased`
+  in the same slice as the implementation. Include compatibility and migration
+  impact where applicable; do not describe planned work as completed. Follow the
+  changelog maintenance instructions in `docs/README.md` when preparing a release.
 - Public APIs require useful rustdoc covering purpose, important invariants,
   security implications, error behavior, and examples where they improve safe
   use. Document panics and unsafe requirements whenever applicable.

@@ -235,11 +235,17 @@ expansion of the policy test surface.
 
 - **Depends on:** P01–P07 (P06 requires a decision, not mandatory new-profile code).
   **Owns:** final documentation consistency, evidence/release checklist and TODO
-  updates; fixes return to the slice owning the affected code/CI.
+  updates, and root `CHANGELOG.md`; fixes return to the slice owning the affected
+  code/CI.
 - An independent reviewer checks compatibility bytes, support claims, seeded
   tests, resource bounds, error/redaction behavior, and executable instructions.
   Reconcile architecture/app plans with shipped behavior; do not edit stale
   generated graph material to manufacture evidence.
+- Review `CHANGELOG.md` against completed slices and actual platform evidence;
+  capture compatibility, recovery, security, and known limitations. Prepare the
+  accumulated `Unreleased` notes for a later authorized release, following
+  [changelog maintenance](../README.md#changelog-and-release-preparation).
+  Do not assign a release date, tag, or publication status before release.
 - Required local gates: `cargo fmt --all -- --check`,
   `cargo clippy --locked --workspace --all-targets -- -D warnings`,
   `cargo test --locked --workspace`, `cargo test --locked --workspace --release`,

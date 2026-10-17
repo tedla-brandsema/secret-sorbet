@@ -24,7 +24,9 @@ Record review and verification evidence with each completed slice. After its
 implementation commit hash is known, update this roadmap in a separate
 reconciliation commit, recording the actual hash rather than guessing a future
 hash. Keep the active marker current and reconcile TODO issue details as work
-lands. An unfinished reconciliation must not imply a slice is complete.
+lands. Update the root [changelog](../CHANGELOG.md) with release-relevant changes
+under `Unreleased` in the implementation slice. An unfinished reconciliation
+must not imply a slice is complete.
 
 No portability implementation is active or authorized by this documentation
 correction. **Next: P01**, before broadening long-policy test coverage. All P01–P08
@@ -108,13 +110,14 @@ remain future work; the completed documentation setup below is separate.
 <a id="p08"></a>
 
 - [ ] **P08 — Review and verify the portability release.** Complete local gates,
-  independent review, safe diagnostics and consistent evidence-backed docs.
+  independent review, safe diagnostics and consistent evidence-backed docs;
+  prepare accurate changelog entries for the subsequent authorized release.
   Depends on: P01–P07; P06 requires a decision, not new-profile implementation.
   Missing required execution leaves this phase partial, not complete with a waiver.
   [Scope and acceptance](plans/portability-and-determinism.md#p08).
   Completion evidence: none. Commit: none.
 
-## Completed documentation setup
+## Documentation delivery
 
 - [x] **D01 — Establish documentation layout and conventions.** Reviewed and
   verified directory/layout documentation; committed as `f19a75b`.
@@ -122,6 +125,12 @@ remain future work; the completed documentation setup below is separate.
   links, scope and baseline checks; committed as `7fd4ffc`.
 - [x] **Documentation reconciliation.** Recorded completed D01/D02 deliveries
   and their actual hashes; reviewed and verified; committed as `e87ab39`.
+- [x] **D03 — Establish the authoritative roadmap.** Reviewed phase/slice
+  checkboxes, the single progress legend, links and historical commit references;
+  committed as `c7364ca`.
+- [>] **D04 — Establish the release changelog.** Create root `CHANGELOG.md`,
+  document per-slice maintenance, and connect final release-note review to P08.
+  Depends on: D03. Review and verification: pending. Commit: pending.
 
 Completed documentation items do not establish portability implementation or
 unverified remote execution.

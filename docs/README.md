@@ -77,6 +77,23 @@ reconciliation may be committed separately after the slice hash is known. Update
 the roadmap after every slice, including its review and verification evidence,
 commit hash, phase progress, and next slice.
 
+## Changelog and release preparation
+
+Keep the root [CHANGELOG.md](../CHANGELOG.md) current under `Unreleased` as
+reviewed slices land. Describe release-relevant behavior and documentation in
+terms useful to users; include compatibility, security, migration, or recovery
+impact where applicable. Group entries under Added, Changed, Deprecated,
+Removed, Fixed, or Security as needed; omit empty categories. Keep planned work
+in the roadmap until it is implemented and verified.
+
+At P08, review the accumulated entries against the completed roadmap, actual
+platform evidence, compatibility fixtures, and remaining limitations. After the
+release gates pass and a release is authorized, move the entries into a section
+with the chosen version and actual release date (`YYYY-MM-DD`), newest first,
+and retain an `Unreleased` section for subsequent work. Keep Cargo versions,
+release notes, and any approved tag consistent. Creating a changelog or completing
+the roadmap does not authorize tagging, publishing packages, or creating a release.
+
 ## Generated state and security
 
 Keep `target/`, `graphify-out/`, `fuzz/target/`, `fuzz/corpus/`, `fuzz/artifacts/`,

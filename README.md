@@ -48,6 +48,8 @@ commands, and documentation conventions. Implementation plans belong in
 `docs/plans/`; [the roadmap](docs/ROADMAP.md) tracks phase and slice progress,
 and `docs/TODO.md` records accepted unfinished work.
 
+See [`CHANGELOG.md`](CHANGELOG.md) for changes awaiting the first release.
+
 ## Determinism Contract
 
 The Rust core avoids platform-dependent behavior by treating all inputs as bytes,

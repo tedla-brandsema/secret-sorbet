@@ -20,7 +20,7 @@ backlog items after recording their evidence and commit in the roadmap.
 | [P05](ROADMAP.md#p05) | Execute i686, ARMv7 and big-endian s390x vectors under emulation; label compilation separately. | P01/P02; coordinate P04 |
 | [P06](ROADMAP.md#p06) | Record explicit product decision on opt-in NFC, new profile/version and recovery migration; preserve v1. | P02/P03 |
 | [P07](ROADMAP.md#p07) | Build mobile core harnesses, then execute fixtures on iOS/Android simulators/emulators and named physical devices; keep app availability claims separate. | P02–P05 |
-| [P08](ROADMAP.md#p08) | Complete required gates, independent review, documentation consistency and evidence-based support claims. | P01–P07 |
+| [P08](ROADMAP.md#p08) | Complete required gates, independent review, documentation consistency, evidence-based support claims, and changelog preparation for a later authorized release. | P01–P07 |
 
 P06 requires a decision record. Implementing an NFC profile requires explicit
 approval and a subsequent plan; this TODO does not approve a compatibility
