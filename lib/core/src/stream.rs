@@ -47,3 +47,29 @@ impl ByteSource for HmacByteStream<'_> {
         Ok(b)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::compatibility_fixture as fixture;
+
+    #[test]
+    fn synthetic_stream_pins_first_two_blocks_and_refill_boundary() {
+        let mut stream = HmacByteStream::new(fixture::KEY, fixture::CONTEXT).unwrap();
+        let actual: Vec<u8> = (0..128).map(|_| stream.next_byte().unwrap()).collect();
+        assert_eq!(&actual[..64], fixture::HMAC_0);
+        assert_eq!(&actual[64..], fixture::HMAC_1);
+        assert_eq!(stream.counter, 2);
+        assert_eq!(stream.offset, 64);
+    }
+
+    #[test]
+    fn block_counter_is_eight_bytes_big_endian_across_byte_boundary() {
+        let mut stream = HmacByteStream::new(fixture::KEY, fixture::CONTEXT).unwrap();
+        stream.counter = 256;
+        stream.refill().unwrap();
+        assert_eq!(&stream.buffer, fixture::HMAC_256);
+        assert_eq!(stream.counter, 257);
+        assert_eq!(stream.offset, 0);
+    }
+}

@@ -1,0 +1,742 @@
+{
+  "schema_version": 1,
+  "algorithm": "secret-sorbet-core-v1",
+  "profile": "secret-sorbet-login-v1",
+  "kdf": {
+    "algorithm": "argon2id",
+    "version": 19,
+    "memory_kib": 65536,
+    "iterations": 3,
+    "lanes": 4,
+    "output_length": 32,
+    "salt_derivation": "sha256-domain-context-v1",
+    "salt_domain": "secret-sorbet-core-v1:argon2id:salt",
+    "salt_length": 16
+  },
+  "provenance": {
+    "generator": "test-vectors/generate_synthetic.py",
+    "reference": "Python 3 stdlib + libargon2 argon2id_hash_raw (v19)",
+    "inputs": "public synthetic test data only"
+  },
+  "cases": [
+    {
+      "id": "unicode-nfc",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 20,
+        "classes": [
+          {
+            "name": "lowercase",
+            "chars": "abcdefghijklmnopqrstuvwxyz",
+            "min_count": 1
+          },
+          {
+            "name": "uppercase",
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            "min_count": 1
+          },
+          {
+            "name": "digit",
+            "chars": "0123456789",
+            "min_count": 1
+          },
+          {
+            "name": "special",
+            "chars": "!@#$%^&*()-_+=<>?",
+            "min_count": 1
+          }
+        ],
+        "allowed": null
+      },
+      "output": "#8=qYJKNT)*4jF_D(bY#"
+    },
+    {
+      "id": "ascii-case-and-unicode-edge-whitespace",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "\t\n\u000b\f\r                  　example.test\t\n\u000b\f\r                  　",
+        "username": "\t\n\u000b\f\r                  　zoë🧪\t\n\u000b\f\r                  　",
+        "counter": "\t\n\u000b\f\r                  　1\t\n\u000b\f\r                  　"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 20,
+        "classes": [
+          {
+            "name": "lowercase",
+            "chars": "abcdefghijklmnopqrstuvwxyz",
+            "min_count": 1
+          },
+          {
+            "name": "uppercase",
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            "min_count": 1
+          },
+          {
+            "name": "digit",
+            "chars": "0123456789",
+            "min_count": 1
+          },
+          {
+            "name": "special",
+            "chars": "!@#$%^&*()-_+=<>?",
+            "min_count": 1
+          }
+        ],
+        "allowed": null
+      },
+      "output": "#8=qYJKNT)*4jF_D(bY#"
+    },
+    {
+      "id": "passphrase-nfd",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 20,
+        "classes": [
+          {
+            "name": "lowercase",
+            "chars": "abcdefghijklmnopqrstuvwxyz",
+            "min_count": 1
+          },
+          {
+            "name": "uppercase",
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            "min_count": 1
+          },
+          {
+            "name": "digit",
+            "chars": "0123456789",
+            "min_count": 1
+          },
+          {
+            "name": "special",
+            "chars": "!@#$%^&*()-_+=<>?",
+            "min_count": 1
+          }
+        ],
+        "allowed": null
+      },
+      "output": "w7(rzHLaT)ddTG_DUPah"
+    },
+    {
+      "id": "username-nfd",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 20,
+        "classes": [
+          {
+            "name": "lowercase",
+            "chars": "abcdefghijklmnopqrstuvwxyz",
+            "min_count": 1
+          },
+          {
+            "name": "uppercase",
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            "min_count": 1
+          },
+          {
+            "name": "digit",
+            "chars": "0123456789",
+            "min_count": 1
+          },
+          {
+            "name": "special",
+            "chars": "!@#$%^&*()-_+=<>?",
+            "min_count": 1
+          }
+        ],
+        "allowed": null
+      },
+      "output": "1LPrC^KvE1MRYtt2RJ3d"
+    },
+    {
+      "id": "near-whitespace-and-nonascii-service-uppercase",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "\u001c​Ä.EXAMPLE﻿",
+        "username": "᠎zoë🧪​﻿",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "\u001c​Ä.example﻿"
+        ],
+        [
+          "username",
+          "᠎zoë🧪​﻿"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 20,
+        "classes": [
+          {
+            "name": "lowercase",
+            "chars": "abcdefghijklmnopqrstuvwxyz",
+            "min_count": 1
+          },
+          {
+            "name": "uppercase",
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            "min_count": 1
+          },
+          {
+            "name": "digit",
+            "chars": "0123456789",
+            "min_count": 1
+          },
+          {
+            "name": "special",
+            "chars": "!@#$%^&*()-_+=<>?",
+            "min_count": 1
+          }
+        ],
+        "allowed": null
+      },
+      "output": "uE^js54H>q#-3Zl#N?8d"
+    },
+    {
+      "id": "near-whitespace-and-nonascii-service-lowercase",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "\u001c​ä.EXAMPLE﻿",
+        "username": "᠎zoë🧪​﻿",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "\u001c​ä.example﻿"
+        ],
+        [
+          "username",
+          "᠎zoë🧪​﻿"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 20,
+        "classes": [
+          {
+            "name": "lowercase",
+            "chars": "abcdefghijklmnopqrstuvwxyz",
+            "min_count": 1
+          },
+          {
+            "name": "uppercase",
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            "min_count": 1
+          },
+          {
+            "name": "digit",
+            "chars": "0123456789",
+            "min_count": 1
+          },
+          {
+            "name": "special",
+            "chars": "!@#$%^&*()-_+=<>?",
+            "min_count": 1
+          }
+        ],
+        "allowed": null
+      },
+      "output": "F!7t8#jdy_kja_5oExkU"
+    },
+    {
+      "id": "counter-rotation",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "2"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "2"
+        ]
+      ],
+      "policy": {
+        "length": 20,
+        "classes": [
+          {
+            "name": "lowercase",
+            "chars": "abcdefghijklmnopqrstuvwxyz",
+            "min_count": 1
+          },
+          {
+            "name": "uppercase",
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            "min_count": 1
+          },
+          {
+            "name": "digit",
+            "chars": "0123456789",
+            "min_count": 1
+          },
+          {
+            "name": "special",
+            "chars": "!@#$%^&*()-_+=<>?",
+            "min_count": 1
+          }
+        ],
+        "allowed": null
+      },
+      "output": "_1UMw8Om(tD<VnG7(vN6"
+    },
+    {
+      "id": "passphrase-whitespace-is-significant",
+      "raw": {
+        "passphrase": "\t Synthetic café 🔐 ",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 20,
+        "classes": [
+          {
+            "name": "lowercase",
+            "chars": "abcdefghijklmnopqrstuvwxyz",
+            "min_count": 1
+          },
+          {
+            "name": "uppercase",
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            "min_count": 1
+          },
+          {
+            "name": "digit",
+            "chars": "0123456789",
+            "min_count": 1
+          },
+          {
+            "name": "special",
+            "chars": "!@#$%^&*()-_+=<>?",
+            "min_count": 1
+          }
+        ],
+        "allowed": null
+      },
+      "output": "od!Hx?o@^!1qglo-QYCE"
+    },
+    {
+      "id": "minimum-count-equals-length",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 6,
+        "classes": [
+          {
+            "name": "letters",
+            "chars": "ab",
+            "min_count": 3
+          },
+          {
+            "name": "digits",
+            "chars": "12",
+            "min_count": 3
+          }
+        ],
+        "allowed": null
+      },
+      "output": "a221bb"
+    },
+    {
+      "id": "class-order",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 6,
+        "classes": [
+          {
+            "name": "digits",
+            "chars": "12",
+            "min_count": 3
+          },
+          {
+            "name": "letters",
+            "chars": "ab",
+            "min_count": 3
+          }
+        ],
+        "allowed": null
+      },
+      "output": "2aba11"
+    },
+    {
+      "id": "duplicate-characters-and-class-names",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 6,
+        "classes": [
+          {
+            "name": "same",
+            "chars": "aabb",
+            "min_count": 3
+          },
+          {
+            "name": "same",
+            "chars": "1122",
+            "min_count": 3
+          }
+        ],
+        "allowed": null
+      },
+      "output": "bbb111"
+    },
+    {
+      "id": "explicit-alphabet",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 6,
+        "classes": [
+          {
+            "name": "letters",
+            "chars": "ab",
+            "min_count": 3
+          },
+          {
+            "name": "digits",
+            "chars": "12",
+            "min_count": 3
+          }
+        ],
+        "allowed": "ab12"
+      },
+      "output": "122aba"
+    },
+    {
+      "id": "minimum-length",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 1,
+        "classes": [
+          {
+            "name": "one",
+            "chars": "x",
+            "min_count": 1
+          }
+        ],
+        "allowed": null
+      },
+      "output": "x"
+    },
+    {
+      "id": "multiple-hmac-blocks-no-required-long",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 300,
+        "classes": [],
+        "allowed": "ab0123"
+      },
+      "output": "13312a20a301a110a212a3b2a3bb01a01a2ab01a2a333013a31a20131abbab1a122b13312b000b3a3b122aa0aa01aaab0021a113b223023b3aa303a322220bb1aa0ab11b213aa1aab33b2ab3a02bbb2233130b033b2021b3a02b32011b113b20bbba1aba2b213ab11132aaab30a312aa32a33a3a303a30331a30bb02a0103a211b1a2a3b001a1a1132b223a311a3b0ba3a0233a1a022"
+    },
+    {
+      "id": "required-position-above-byte-range",
+      "raw": {
+        "passphrase": "Synthetic café 🔐",
+        "service": "EXAMPLE.TEST",
+        "username": "zoë🧪",
+        "counter": "1"
+      },
+      "effective_variables": [
+        [
+          "purpose",
+          "login"
+        ],
+        [
+          "service",
+          "example.test"
+        ],
+        [
+          "username",
+          "zoë🧪"
+        ],
+        [
+          "counter",
+          "1"
+        ]
+      ],
+      "policy": {
+        "length": 257,
+        "classes": [
+          {
+            "name": "one",
+            "chars": "X",
+            "min_count": 1
+          }
+        ],
+        "allowed": "abX"
+      },
+      "output": "bXaXXaaaXaaXaaXaXXXaXXaabbaXbXXaaXXXbaabXabbXbbXbbaaaXaaXaXbaaaXXXbbababbXaXXaaabbbXXXXbXbbbXbabaaabbbbaXbababbXXbbbXXXaabbbXXXbaXXXXXbbbXXXXaaXXbXbbXXXaXXaXXabbaaaXaXbbbbXbXbbaaXXaXXbaaXaaaXbXbbbbbaXaXXabXbaaXXaabXbXbXabXbaXbXXXXabbXbaaabaaaXXaabXbXXaXabXX"
+    }
+  ]
+}

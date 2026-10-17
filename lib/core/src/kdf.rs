@@ -38,6 +38,25 @@ mod tests {
     use super::*;
 
     #[test]
+    fn synthetic_salt_digest_truncation_and_argon2_key_match_independent_reference() {
+        use crate::compatibility_fixture as fixture;
+
+        let digest = Sha256::new()
+            .chain_update(KDF_PROFILE.salt_domain.as_bytes())
+            .chain_update((fixture::CONTEXT.len() as u64).to_be_bytes())
+            .chain_update(fixture::CONTEXT)
+            .finalize();
+        assert_eq!(digest.as_slice(), fixture::SALT_DIGEST);
+        assert_eq!(&digest[..KDF_PROFILE.salt_length], fixture::SALT);
+        assert_eq!(
+            derive_key("Synthetic core 🔐".as_bytes(), fixture::CONTEXT)
+                .unwrap()
+                .as_ref(),
+            fixture::KEY
+        );
+    }
+
+    #[test]
     fn uses_rfc_9106_memory_constrained_parameters() {
         assert_eq!(KDF_PROFILE.memory_kib, 64 * 1024);
         assert_eq!(KDF_PROFILE.iterations, 3);

@@ -1,8 +1,13 @@
 use proptest::prelude::*;
+use proptest::test_runner::RngSeed;
 use secret_sorbet_pw::{LoginInput, validate_email, validate_service, validate_username};
 
 proptest! {
-    #![proptest_config(ProptestConfig::with_cases(512))]
+    #![proptest_config(ProptestConfig {
+        cases: 512,
+        rng_seed: RngSeed::Fixed(0x5057_5631),
+        ..ProptestConfig::default()
+    })]
 
     #[test]
     fn service_variables_are_ascii_case_insensitive(

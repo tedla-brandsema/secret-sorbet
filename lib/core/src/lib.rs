@@ -9,6 +9,26 @@ mod variable;
 #[cfg(test)]
 mod property_tests;
 
+#[cfg(test)]
+mod compatibility_fixture {
+    include!("../../../test-vectors/synthetic-core-v1.rs");
+
+    pub(crate) fn variables() -> Vec<crate::Variable> {
+        vec![
+            crate::Variable::new("名", "é🧪"),
+            crate::Variable::new("counter", "1"),
+        ]
+    }
+
+    pub(crate) fn policy() -> crate::OutputPolicy {
+        crate::OutputPolicy {
+            length: 10,
+            classes: vec![crate::CharacterClass::new("文字", "aab12", 2)],
+            allowed: None,
+        }
+    }
+}
+
 pub use encoder::{ByteSource, Encoder};
 pub use error::Error;
 pub use policy::{CharacterClass, OutputPolicy};
@@ -104,6 +124,154 @@ fn validate_secret_and_variables(secret: &str, variables: &[Variable]) -> Result
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn synthetic_core_outputs_pin_variable_order_and_empty_list_acceptance() {
+        use compatibility_fixture as fixture;
+
+        let mut variables = fixture::variables();
+        let policy = fixture::policy();
+        assert_eq!(
+            derive("Synthetic core 🔐", &variables, &policy).unwrap(),
+            fixture::OUTPUT
+        );
+        variables.reverse();
+        assert_eq!(
+            derive("Synthetic core 🔐", &variables, &policy).unwrap(),
+            fixture::REORDERED_OUTPUT
+        );
+        assert_eq!(
+            derive("Synthetic core 🔐", &[], &policy).unwrap(),
+            fixture::EMPTY_VARIABLES_OUTPUT
+        );
+    }
+
+    #[test]
+    fn core_rejects_empty_secret_and_fields_but_accepts_empty_variable_lists() {
+        assert_eq!(
+            validate_secret_and_variables("", &[]),
+            Err(Error::EmptySecret)
+        );
+        assert_eq!(validate_secret_and_variables(" ", &[]), Ok(()));
+        assert_eq!(
+            validate_secret_and_variables("synthetic", &[Variable::new("", "value")]),
+            Err(Error::EmptyVariableName)
+        );
+        assert_eq!(
+            validate_secret_and_variables("synthetic", &[Variable::new("synthetic-name", "")]),
+            Err(Error::EmptyVariableValue {
+                name: "synthetic-name".to_owned()
+            })
+        );
+    }
+
+    #[test]
+    fn policy_validation_rejects_invalid_charsets_counts_and_overflow_without_deriving() {
+        let cases = [
+            (
+                OutputPolicy {
+                    length: 0,
+                    classes: vec![],
+                    allowed: Some("a".into()),
+                },
+                Error::InvalidLength,
+            ),
+            (
+                OutputPolicy {
+                    length: 1,
+                    classes: vec![],
+                    allowed: None,
+                },
+                Error::EmptyCharset {
+                    name: "allowed".into(),
+                },
+            ),
+            (
+                OutputPolicy {
+                    length: 1,
+                    classes: vec![],
+                    allowed: Some("".into()),
+                },
+                Error::EmptyCharset {
+                    name: "allowed".into(),
+                },
+            ),
+            (
+                OutputPolicy {
+                    length: 1,
+                    classes: vec![],
+                    allowed: Some("é".into()),
+                },
+                Error::NonAsciiCharset {
+                    name: "allowed".into(),
+                },
+            ),
+            (
+                OutputPolicy {
+                    length: 1,
+                    classes: vec![CharacterClass::new("synthetic", "", 0)],
+                    allowed: Some("a".into()),
+                },
+                Error::EmptyCharset {
+                    name: "synthetic".into(),
+                },
+            ),
+            (
+                OutputPolicy {
+                    length: 1,
+                    classes: vec![CharacterClass::new("synthetic", "🧪", 0)],
+                    allowed: Some("a".into()),
+                },
+                Error::NonAsciiCharset {
+                    name: "synthetic".into(),
+                },
+            ),
+            (
+                OutputPolicy {
+                    length: 1,
+                    classes: vec![CharacterClass::new("synthetic", "a", 2)],
+                    allowed: None,
+                },
+                Error::RequiredCountExceedsLength,
+            ),
+            (
+                OutputPolicy {
+                    length: usize::MAX,
+                    classes: vec![
+                        CharacterClass::new("first", "a", usize::MAX),
+                        CharacterClass::new("second", "a", 1),
+                    ],
+                    allowed: None,
+                },
+                Error::RequiredCountExceedsLength,
+            ),
+            (
+                OutputPolicy {
+                    length: 1,
+                    classes: vec![CharacterClass::new("synthetic", "b", 0)],
+                    allowed: Some("a".into()),
+                },
+                Error::RequiredClassNotAllowed {
+                    name: "synthetic".into(),
+                    ch: 'b',
+                },
+            ),
+        ];
+        for (policy, expected) in cases {
+            assert_eq!(policy::validate_policy(&policy), Err(expected));
+        }
+        // Class labels are context metadata: unlike charsets they may be empty
+        // or non-ASCII. Do not accidentally impose login validation on core.
+        let policy = OutputPolicy {
+            length: 1,
+            classes: vec![
+                CharacterClass::new("", "a", 0),
+                CharacterClass::new("名", "a", 1),
+            ],
+            allowed: None,
+        };
+        assert_eq!(policy::validate_policy(&policy), Ok(()));
+    }
 
     fn login_vars() -> Vec<Variable> {
         vec![

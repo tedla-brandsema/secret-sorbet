@@ -25,6 +25,9 @@ awaiting release. Planned portability work is tracked in the
   CI configuration for formatting, linting, tests, dependency audits, fuzz
   smoke checks, and six native desktop targets. Configured targets do not by
   themselves establish that cross-platform execution has been verified.
+- Fifteen additional synthetic raw-login vectors and independent Python/libargon2
+  reproduction, plus pinned context, salt, key, HMAC, Unicode, and policy-boundary
+  contracts. The original v1 vector remains unchanged.
 - Repository documentation conventions, an implementation plan, and a
   canonical TODO list linked to the roadmap.
 
