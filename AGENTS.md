@@ -82,9 +82,12 @@ production quality.
   use. Document panics and unsafe requirements whenever applicable.
 - Comments should explain reasoning, invariants, formats, and non-obvious safety
   constraints. Do not narrate syntax or leave stale commented-out code.
-- Keep the README, files under `.docs/`, application documentation, examples,
+- Keep the README, files under `docs/`, application documentation, examples,
   compatibility-vector metadata, and operational instructions consistent with
   the current implementation.
+- Store plans created for this repository under `docs/plans/`. Track accepted
+  unfinished work in `docs/TODO.md`; use stable slice IDs and link each item to
+  its implementation plan. Keep implementation status separate from proposals.
 - Architecture and security documentation must distinguish implemented behavior,
   planned work, accepted risk, and externally audited claims. Never present a
   plan or assumption as a shipped guarantee.

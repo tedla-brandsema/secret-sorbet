@@ -43,6 +43,10 @@ without displaying it. Pass `--print` to emit it explicitly on standard output.
 See [`app/cli/README.md`](app/cli/README.md) for secure automation, output, and
 diagnostic behavior.
 
+See [`docs/README.md`](docs/README.md) for architecture boundaries, contributor
+commands, and documentation conventions. Implementation plans belong in
+`docs/plans/`; accepted unfinished work is tracked in `docs/TODO.md`.
+
 ## Determinism Contract
 
 The Rust core avoids platform-dependent behavior by treating all inputs as bytes,
