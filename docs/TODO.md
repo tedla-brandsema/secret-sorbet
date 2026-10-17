@@ -14,7 +14,6 @@ backlog items after recording their evidence and commit in the roadmap.
 | ID | Accepted work | Depends on |
 | --- | --- | --- |
 | [P03](ROADMAP.md#p03) | Document std/heap, 64 MiB plus overhead, dependency/thread and 32/64-bit requirements; v1 Unicode baseline and toolchain drift. | P02; final evidence P04/P05 |
-| [P05](ROADMAP.md#p05) | Execute i686, ARMv7 and big-endian s390x vectors under emulation; label compilation separately. | P01/P02; coordinate P04 |
 | [P06](ROADMAP.md#p06) | Record explicit product decision on opt-in NFC, new profile/version and recovery migration; preserve v1. | P02/P03 |
 | [P07](ROADMAP.md#p07) | Build mobile core harnesses, then execute fixtures on iOS/Android simulators/emulators and named physical devices; keep app availability claims separate. | P02–P05 |
 | [P08](ROADMAP.md#p08) | Complete required gates, independent review, documentation consistency, evidence-based support claims, and changelog preparation for a later authorized release. | P01–P07 |
@@ -27,8 +26,8 @@ approval and a subsequent plan; this TODO does not approve a compatibility
 change. P07 remains future work while mobile tooling/devices are unavailable;
 record specific partial evidence and remaining work instead of closing it.
 
-Active slice: **P05**, establishing emulated execution evidence. P03's final
-support documentation follows P04/P05 evidence. Missing
+Active slice: **P03**, publishing support documentation with verified P04/P05
+execution evidence. Missing
 required execution keeps the owning slice and release phase partial in the
 roadmap; record the exact remaining target/check here and do not treat documented
 limits as a waiver.

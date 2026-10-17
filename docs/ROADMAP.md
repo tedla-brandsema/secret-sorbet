@@ -29,7 +29,7 @@ under `Unreleased` in the implementation slice. An unfinished reconciliation
 must not imply a slice is complete.
 
 The authorized delivery boundary is the end of Phase 2 (P01–P05), including
-review, verification, commits, and pushes to `origin/main`. **Active: P05**.
+review, verification, commits, and pushes to `origin/main`. **Active: P03**.
 P06 and P07 are deferred at the user's request; P08 remains outside this run.
 Deferral does not establish Unicode-profile or mobile execution evidence.
 
@@ -60,12 +60,12 @@ Deferral does not establish Unicode-profile or mobile execution evidence.
 
 ## Phase 2 — Portable execution evidence
 
-- [~] Phase 2: P04 is complete and P05 is active; P03 will incorporate
-  execution evidence after P04/P05, as its dependencies require.
+- [~] Phase 2: P04 and P05 are complete; P03 is finalizing the support contract
+  with their observed execution evidence.
 
 <a id="p03"></a>
 
-- [ ] **P03 — Publish support requirements and v1 Unicode behavior.** Document
+- [>] **P03 — Publish support requirements and v1 Unicode behavior.** Document
   std/heap, memory overhead, dependency/thread and 32/64-bit requirements.
   Depends on: P02; documentation may be drafted while execution is pending,
   with final evidence references completed after P04/P05 (no execution cycle).
@@ -84,11 +84,14 @@ Deferral does not establish Unicode-profile or mobile execution evidence.
 
 <a id="p05"></a>
 
-- [>] **P05 — Execute 32-bit and big-endian fixtures.** Run i686, ARMv7 and s390x
+- [x] **P05 — Execute 32-bit and big-endian fixtures.** Run i686, ARMv7 and s390x
   under emulation with reproducible setup and explicit resource bounds.
   Depends on: P01/P02; coordinate CI ownership with P04.
   [Scope and acceptance](plans/portability-and-determinism.md#p05).
-  Completion evidence: none. Commit: none.
+  Independently reviewed; 13 harness regression tests passed. All three emulated
+  debug/release shared suites and all six native repeats passed, with quality,
+  audit and fuzz, in [run 39022373134](https://github.com/tedla-brandsema/secret-sorbet/actions/runs/39022373134)
+  at tested revision `fd01cbc`. Implementation commit: `034d68a`.
 
 ## Phase 3 — Unicode product checkpoint
 
