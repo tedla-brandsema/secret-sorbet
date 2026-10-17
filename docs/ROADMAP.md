@@ -29,7 +29,7 @@ under `Unreleased` in the implementation slice. An unfinished reconciliation
 must not imply a slice is complete.
 
 The authorized delivery through Phase 2 (P01–P05) is complete: implementation,
-review, verification, and commits are recorded below. D05 is active below.
+review, verification, and commits are recorded below. No slice is active.
 P06 and P07 are deferred at the user's request; P08 remains outside this run.
 Deferral does not establish Unicode-profile or mobile execution evidence.
 
@@ -153,11 +153,14 @@ Deferral does not establish Unicode-profile or mobile execution evidence.
   document per-slice maintenance, and connect final release-note review to P08.
   Depends on: D03. Independently reviewed; 44 local links/anchors, changelog
   structure, future-slice status and diff checks passed. Commit: `6dfae73`.
-- [>] **D05 — Surface compatibility evidence in the README.** Add a nine-target
+- [x] **D05 — Surface compatibility evidence in the README.** Add a nine-target
   matrix linking each verified debug/release job and a separate live workflow
   badge. Depends on: P03–P05. Preserve the tested revision, native/emulated scope,
-  and mobile deferral; document how to refresh the snapshot. Verify target/job
-  parity with the durable evidence, links, and an independent documentation review.
+  and mobile deferral; document how to refresh the snapshot. Independently
+  reviewed; all nine target/job outcomes match the durable evidence and workflow,
+  30 local documentation links/anchors and diff checks passed, and the live
+  badge returned HTTP 200 with SVG content. Documentation-only scope; no Rust
+  behavior changed or Rust checks rerun. Commit: `f656579`.
 
 Completed documentation items do not establish portability implementation or
 unverified remote execution.
