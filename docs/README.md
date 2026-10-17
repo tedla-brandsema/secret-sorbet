@@ -73,6 +73,31 @@ Rust target on other systems. Harness Python requires 3.11 or newer (`tomllib`);
 CI uses Python 3.12. Metadata is retained for 90 days in GitHub Actions artifacts;
 durable support claims must retain run links and fixture/lock identity in docs.
 
+The emulated jobs run only the shared core/password suites: CLI integration tests
+spawn child executables that would need separate binfmt setup. The harness
+compiles and executes a target identity probe under QEMU before testing; a
+cross-build alone is insufficient. To reproduce the s390x job on Ubuntu 24.04:
+
+```sh
+sudo apt-get update
+sudo apt-get install --no-install-recommends -y \
+  qemu-user gcc-s390x-linux-gnu libc6-dev-s390x-cross
+rustup target add --toolchain 1.98.0 s390x-unknown-linux-gnu
+python3 .github/scripts/test-evidence.py \
+  --target s390x-unknown-linux-gnu --runner ubuntu-24.04 \
+  --emulator qemu-s390x --linker s390x-linux-gnu-gcc \
+  --sysroot /usr/s390x-linux-gnu --system-package qemu-user \
+  --system-package gcc-s390x-linux-gnu --system-package libc6-dev-s390x-cross \
+  --output /tmp/secret-sorbet-s390x-evidence.json
+```
+
+The workflow defines equivalent i686 and ARMv7 configurations. It preserves
+Argon2's parallel feature and serializes tests, with three emulated jobs at most
+and a 45-minute limit per job. Setup metadata records installed package versions,
+QEMU/compiler-driver versions, target ABI, and sysroot loader/libc hashes. Ubuntu
+packages can change between runs; each run revalidates the pinned byte fixtures
+and records the actual setup rather than claiming an immutable system image.
+
 Use one lowercase Conventional Commit type per coherent reviewed slice, for
 example `docs: define the portability plan`. Stage only intended files. Commit
 and push only within the authorization given for the task; never rewrite accepted

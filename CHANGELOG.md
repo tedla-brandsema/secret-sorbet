@@ -31,6 +31,8 @@ awaiting release. Planned portability work is tracked in the
 - A native CI harness for serialized debug/release workspace tests on six desktop
   targets, with clean-checkout checks and retained compiler/runtime, commit,
   lockfile, fixture, and command-status metadata.
+- Emulated debug/release core and password fixture jobs for GNU Linux i686,
+  ARMv7, and big-endian s390x, with QEMU runtime identity and setup provenance.
 - Repository documentation conventions, an implementation plan, and a
   canonical TODO list linked to the roadmap.
 
