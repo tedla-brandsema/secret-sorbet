@@ -10,6 +10,22 @@ This changelog tracks notable changes. Planned work remains in the
 - Optimized repository artwork and reusable app, browser-extension and favicon
   assets, with ImageMagick regeneration instructions.
 - The project logo at the top of the README.
+- A warning on standard error for passphrases shorter than 15 characters.
+
+### Changed
+
+- `seso generate` prompts for an omitted `--service` or `--username` instead of
+  requiring both, keeping them out of process listings and shell history.
+- Clipboard cleanup leaves empty or non-text clipboard content untouched instead
+  of clearing it.
+- CI actions are pinned to commit SHAs and kept current by Dependabot.
+
+### Security
+
+- Updated `ctutils` (RUSTSEC-2026-0385), `rustix` (RUSTSEC-2026-0486) and the
+  yanked `clipboard-win` in the lockfiles.
+- The HMAC keystream buffer is zeroized on drop, and the standard-input
+  passphrase buffer is preallocated so it is never reallocated.
 
 ## [0.1.0] - 2026-10-17
 
