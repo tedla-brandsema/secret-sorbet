@@ -21,6 +21,10 @@ use zeroize::Zeroizing;
 /// Maximum UTF-8 byte length accepted for a passphrase by the CLI.
 pub const MAX_PASSPHRASE_BYTES: usize = 1024;
 
+/// Passphrases shorter than this many characters trigger a warning (NIST SP
+/// 800-63B's single-factor minimum). Generation still proceeds.
+pub const MIN_RECOMMENDED_PASSPHRASE_CHARS: usize = 15;
+
 /// Number of seconds a generated password remains on the clipboard.
 pub const CLIPBOARD_TTL_SECONDS: u64 = 120;
 
@@ -63,22 +67,16 @@ enum Command {
 
 #[derive(clap::Args)]
 struct GenerateArgs {
-    /// Service domain, such as example.com.
-    #[arg(
-        long,
-        value_name = "DOMAIN",
-        required_unless_present = "interactive",
-        conflicts_with = "interactive"
-    )]
+    /// Service domain, such as example.com; prompted for when omitted.
+    ///
+    /// Command-line values are visible to other local users and shell history.
+    #[arg(long, value_name = "DOMAIN", conflicts_with = "interactive")]
     service: Option<String>,
 
-    /// Account username or email address.
-    #[arg(
-        long,
-        value_name = "USERNAME",
-        required_unless_present = "interactive",
-        conflicts_with = "interactive"
-    )]
+    /// Account username or email address; prompted for when omitted.
+    ///
+    /// Command-line values are visible to other local users and shell history.
+    #[arg(long, value_name = "USERNAME", conflicts_with = "interactive")]
     username: Option<String>,
 
     /// Password revision counter.
@@ -90,7 +88,10 @@ struct GenerateArgs {
     passphrase_stdin: bool,
 
     /// Prompt for service, username, and passphrase.
+    // Omitted values are prompted for anyway; this flag only rejects
+    // command-line and standard-input values, which clap enforces.
     #[arg(short = 'i', long, conflicts_with = "passphrase_stdin")]
+    #[allow(dead_code)]
     interactive: bool,
 
     /// Print the generated password to standard output instead of using the clipboard.
@@ -116,10 +117,6 @@ pub enum Error {
         "could not ask for clipboard confirmation; use --print in a non-interactive environment"
     )]
     ClipboardConfirmation(#[source] io::Error),
-
-    /// Clap's argument guarantees were not upheld by a programmatic caller.
-    #[error("required command-line input is missing")]
-    MissingArgument,
 
     /// A passphrase could not be read from standard input.
     #[error("could not read the passphrase from standard input")]
@@ -173,7 +170,6 @@ impl Error {
             Self::TerminalInput(_) => "terminal_input",
             Self::InteractiveInput(_) => "interactive_input",
             Self::ClipboardConfirmation(_) => "clipboard_confirmation",
-            Self::MissingArgument => "missing_argument",
             Self::StandardInput(_) => "standard_input",
             Self::PassphraseTooLong => "passphrase_too_long",
             Self::MultilinePassphrase => "multiline_passphrase",
@@ -257,24 +253,27 @@ fn generate(
         "password generation started"
     );
 
-    let (service, username, mut passphrase) = if args.interactive {
-        let service = prompt
+    let service = match args.service {
+        Some(service) => service,
+        None => prompt
             .visible("Service: ")
-            .map_err(Error::InteractiveInput)?;
-        let username = prompt
-            .visible("Username: ")
-            .map_err(Error::InteractiveInput)?;
-        let passphrase = prompt
-            .hidden("Passphrase: ")
-            .map_err(Error::TerminalInput)
-            .and_then(|value| validate_passphrase(Zeroizing::new(value)))?;
-        (service, username, passphrase)
-    } else {
-        let service = args.service.ok_or(Error::MissingArgument)?;
-        let username = args.username.ok_or(Error::MissingArgument)?;
-        let passphrase = read_passphrase(args.passphrase_stdin, input, prompt)?;
-        (service, username, passphrase)
+            .map_err(Error::InteractiveInput)?,
     };
+    let username = match args.username {
+        Some(username) => username,
+        None => prompt
+            .visible("Username: ")
+            .map_err(Error::InteractiveInput)?,
+    };
+    let mut passphrase = read_passphrase(args.passphrase_stdin, input, prompt)?;
+
+    if is_weak_passphrase(&passphrase) {
+        warn!(
+            event = "weak_passphrase",
+            recommended_min_chars = MIN_RECOMMENDED_PASSPHRASE_CHARS,
+            "short passphrase: anyone who obtains one generated password can guess it offline; use a longer one"
+        );
+    }
 
     let mut login = LoginInput::new(std::mem::take(&mut *passphrase), service, username);
     login.counter = args.counter;
@@ -312,7 +311,8 @@ fn read_passphrase(
         return validate_passphrase(Zeroizing::new(passphrase));
     }
 
-    let mut passphrase = Zeroizing::new(String::new());
+    // Preallocated so reading never reallocates and strands unwiped copies.
+    let mut passphrase = Zeroizing::new(String::with_capacity(MAX_PASSPHRASE_BYTES + 3));
     (&mut *input)
         .take((MAX_PASSPHRASE_BYTES + 3) as u64)
         .read_to_string(&mut passphrase)
@@ -474,6 +474,8 @@ fn wait_with_countdown(
     Ok(WaitOutcome::Expired)
 }
 
+const CLIPBOARD_CHANGED: &str = "\rClipboard changed; generated password is no longer active.\n";
+
 fn clear_if_unchanged(
     clipboard: &mut dyn ClipboardAccess,
     password: &str,
@@ -491,9 +493,16 @@ fn clear_if_unchanged(
                     .map_err(Error::TerminalOutput)?;
             } else {
                 prompt
-                    .status("\rClipboard changed; generated password is no longer active.\n")
+                    .status(CLIPBOARD_CHANGED)
                     .map_err(Error::TerminalOutput)?;
             }
+        }
+        // Empty or non-text content (an image, files) replaced the password;
+        // clearing here would destroy what the user just copied.
+        Err(arboard::Error::ContentNotAvailable) => {
+            prompt
+                .status(CLIPBOARD_CHANGED)
+                .map_err(Error::TerminalOutput)?;
         }
         Err(_) => {
             warn!(
@@ -553,6 +562,12 @@ fn validate_passphrase(passphrase: Zeroizing<String>) -> Result<Zeroizing<String
         return Err(Error::MultilinePassphrase);
     }
     Ok(passphrase)
+}
+
+// ponytail: length-only heuristic; swap in an entropy estimator (zxcvbn) if
+// short-but-random or long-but-common passphrases need better verdicts.
+fn is_weak_passphrase(passphrase: &str) -> bool {
+    passphrase.chars().count() < MIN_RECOMMENDED_PASSPHRASE_CHARS
 }
 
 fn strip_one_line_ending(value: &mut String) {
@@ -641,6 +656,14 @@ mod tests {
         let mut value = "passphrase\r".to_owned();
         strip_one_line_ending(&mut value);
         assert_eq!(value, "passphrase\r");
+    }
+
+    #[test]
+    fn warns_below_the_recommended_passphrase_length_in_characters() {
+        assert!(is_weak_passphrase("fourteen chars"));
+        assert!(!is_weak_passphrase("fifteen chars.."));
+        // Counted in characters, not UTF-8 bytes.
+        assert!(is_weak_passphrase("ééééééé"));
     }
 
     #[test]
@@ -734,15 +757,18 @@ mod tests {
     }
 
     #[test]
-    fn argument_mode_still_requires_service_and_username() {
-        let error = match Cli::try_parse_from(["seso", "generate"]) {
-            Err(error) => error,
-            Ok(_) => panic!("argument mode must reject missing inputs"),
-        };
-        let message = error.to_string();
+    fn omitted_arguments_are_prompted_for_individually() {
+        let cli = Cli::try_parse_from(["seso", "generate", "--service", "github.com", "--print"])
+            .unwrap();
+        let mut prompt =
+            MockPrompt::with_responses(&["ted@example.com", "long private passphrase"]);
+        let mut input = io::empty();
+        let mut output = Vec::new();
 
-        assert!(message.contains("--service <DOMAIN>"));
-        assert!(message.contains("--username <USERNAME>"));
+        run_with_prompt(cli, &mut input, &mut output, &mut prompt).unwrap();
+
+        assert_eq!(prompt.labels, ["Username: ", "Passphrase: "]);
+        assert_eq!(output, b"jSOua2Pe8n-xhU-kui9#\n");
     }
 
     #[test]
@@ -777,6 +803,46 @@ mod tests {
     struct MockClipboard {
         text: String,
         cleared: bool,
+    }
+
+    struct FailingClipboard {
+        error: Option<arboard::Error>,
+        cleared: bool,
+    }
+
+    impl ClipboardAccess for FailingClipboard {
+        fn set_sensitive_text(&mut self, _: &str) -> Result<(), arboard::Error> {
+            Ok(())
+        }
+
+        fn get_text(&mut self) -> Result<String, arboard::Error> {
+            Err(self.error.take().expect("one read per test"))
+        }
+
+        fn clear(&mut self) -> Result<(), arboard::Error> {
+            self.cleared = true;
+            Ok(())
+        }
+    }
+
+    #[test]
+    fn non_text_content_is_preserved_but_unverifiable_clipboards_are_cleared() {
+        for (error, expect_cleared) in [
+            (arboard::Error::ContentNotAvailable, false),
+            (arboard::Error::ClipboardOccupied, true),
+        ] {
+            let mut clipboard = FailingClipboard {
+                error: Some(error),
+                cleared: false,
+            };
+            clear_if_unchanged(
+                &mut clipboard,
+                "generated secret",
+                &mut MockPrompt::default(),
+            )
+            .unwrap();
+            assert_eq!(clipboard.cleared, expect_cleared);
+        }
     }
 
     impl ClipboardAccess for MockClipboard {

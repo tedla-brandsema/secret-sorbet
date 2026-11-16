@@ -25,6 +25,12 @@ does not accept a passphrase through a command-line argument or environment
 option, because those values are commonly exposed through process inspection,
 shell history, or inherited environments.
 
+A service or username given on the command line is visible to other local
+users through process inspection and is saved in shell history. Omit either
+option to be prompted for it instead. Passphrases shorter than 15 characters
+produce a warning on standard error: anyone who obtains one generated password
+can test passphrase guesses offline, so length is the main defense.
+
 Interactive mode prompts for the service, username, and passphrase in that
 order. Use either the short or long option:
 
@@ -100,8 +106,9 @@ The initial command uses the default login policy and accepts:
 - revision counter, defaulting to `1`
 - a passphrase from a hidden prompt or standard input
 
-Service and username are command-line options by default. With `-i` or
-`--interactive`, all three mandatory inputs are collected by prompts instead.
+Service and username may be given as command-line options; whichever is
+omitted is prompted for. With `-i` or `--interactive`, all three mandatory
+inputs are collected by prompts.
 
 Custom output policies, shell completions, and vault commands are not part of
 this first version.

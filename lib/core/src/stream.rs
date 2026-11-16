@@ -1,5 +1,6 @@
 use hmac::{Hmac, Mac};
 use sha2::Sha512;
+use zeroize::Zeroizing;
 
 use crate::{ByteSource, Error};
 
@@ -9,7 +10,9 @@ pub(crate) struct HmacByteStream<'a> {
     key: &'a [u8],
     context: &'a [u8],
     counter: u64,
-    buffer: [u8; 64],
+    // Keystream bytes determine the password; wipe them on drop.
+    // ponytail: hmac 0.12 cannot zeroize its keyed state; revisit on hmac 0.13.
+    buffer: Zeroizing<[u8; 64]>,
     offset: usize,
 }
 
@@ -19,7 +22,7 @@ impl<'a> HmacByteStream<'a> {
             key,
             context,
             counter: 0,
-            buffer: [0; 64],
+            buffer: Zeroizing::new([0; 64]),
             offset: 64,
         };
         stream.refill()?;
@@ -68,7 +71,7 @@ mod tests {
         let mut stream = HmacByteStream::new(fixture::KEY, fixture::CONTEXT).unwrap();
         stream.counter = 256;
         stream.refill().unwrap();
-        assert_eq!(&stream.buffer, fixture::HMAC_256);
+        assert_eq!(&*stream.buffer, fixture::HMAC_256);
         assert_eq!(stream.counter, 257);
         assert_eq!(stream.offset, 0);
     }
